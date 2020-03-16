@@ -42,9 +42,10 @@ class MainViewController: UIViewController {
 
 }
 
-// MARK: - TableView data source and delegate
-
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    
+    // MARK: - TableView data source
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurantNames.count
@@ -56,7 +57,17 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         let eateryName = restaurantNames[indexPath.row]
         cell.textLabel?.text = eateryName
         cell.imageView?.image = UIImage(named: eateryName)
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
+        
+        cell.imageView?.clipsToBounds = true
         
         return cell
+    }
+    
+    
+    // MARK: - TableView delegate
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 85
     }
 }
