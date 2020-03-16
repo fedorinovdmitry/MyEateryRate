@@ -9,21 +9,21 @@
 /* Begin PBXBuildFile section */
 		499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D2241F8B31005E19EE /* AppDelegate.swift */; };
 		499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D4241F8B31005E19EE /* SceneDelegate.swift */; };
-		499895D7241F8B31005E19EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D6241F8B31005E19EE /* ViewController.swift */; };
 		499895DA241F8B31005E19EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895D8241F8B31005E19EE /* Main.storyboard */; };
 		499895DC241F8B37005E19EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499895DB241F8B37005E19EE /* Assets.xcassets */; };
 		499895DF241F8B37005E19EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895DD241F8B37005E19EE /* LaunchScreen.storyboard */; };
+		499895E7241F9A75005E19EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895E6241F9A75005E19EE /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		499895CF241F8B30005E19EE /* MyEateryRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEateryRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499895D2241F8B31005E19EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499895D4241F8B31005E19EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		499895D6241F8B31005E19EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		499895D9241F8B31005E19EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		499895DB241F8B37005E19EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		499895DE241F8B37005E19EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		499895E0241F8B37005E19EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		499895E6241F9A75005E19EE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +56,103 @@
 		499895D1241F8B31005E19EE /* MyEateryRate */ = {
 			isa = PBXGroup;
 			children = (
-				499895D2241F8B31005E19EE /* AppDelegate.swift */,
-				499895D4241F8B31005E19EE /* SceneDelegate.swift */,
-				499895D6241F8B31005E19EE /* ViewController.swift */,
-				499895D8241F8B31005E19EE /* Main.storyboard */,
-				499895DB241F8B37005E19EE /* Assets.xcassets */,
-				499895DD241F8B37005E19EE /* LaunchScreen.storyboard */,
-				499895E0241F8B37005E19EE /* Info.plist */,
+				499895EC241F9C18005E19EE /* Application */,
+				499895EE241F9C89005E19EE /* MainScene */,
+				499895EB241F9AF0005E19EE /* SupportingFiles */,
 			);
 			path = MyEateryRate;
+			sourceTree = "<group>";
+		};
+		499895E8241F9A84005E19EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				499895D2241F8B31005E19EE /* AppDelegate.swift */,
+				499895D4241F8B31005E19EE /* SceneDelegate.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		499895E9241F9ABE005E19EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		499895EA241F9AE1005E19EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				499895DD241F8B37005E19EE /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		499895EB241F9AF0005E19EE /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				499895E0241F8B37005E19EE /* Info.plist */,
+				499895DB241F8B37005E19EE /* Assets.xcassets */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		499895EC241F9C18005E19EE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				499895E9241F9ABE005E19EE /* Model */,
+				499895EA241F9AE1005E19EE /* View */,
+				499895E8241F9A84005E19EE /* Controller */,
+				499895ED241F9C4A005E19EE /* Services */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		499895ED241F9C4A005E19EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		499895EE241F9C89005E19EE /* MainScene */ = {
+			isa = PBXGroup;
+			children = (
+				499895EF241F9C95005E19EE /* Model */,
+				499895F0241F9C9D005E19EE /* View */,
+				499895F1241F9CBA005E19EE /* Controller */,
+				499895F2241F9CC2005E19EE /* Services */,
+			);
+			path = MainScene;
+			sourceTree = "<group>";
+		};
+		499895EF241F9C95005E19EE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		499895F0241F9C9D005E19EE /* View */ = {
+			isa = PBXGroup;
+			children = (
+				499895D8241F8B31005E19EE /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		499895F1241F9CBA005E19EE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				499895E6241F9A75005E19EE /* MainViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		499895F2241F9CC2005E19EE /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +226,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				499895D7241F8B31005E19EE /* ViewController.swift in Sources */,
 				499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
+				499895E7241F9A75005E19EE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,7 +373,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyEateryRate/Info.plist;
+				DEVELOPMENT_TEAM = 6FJHRWT7C3;
+				INFOPLIST_FILE = MyEateryRate/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -302,7 +391,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = MyEateryRate/Info.plist;
+				DEVELOPMENT_TEAM = 6FJHRWT7C3;
+				INFOPLIST_FILE = MyEateryRate/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
