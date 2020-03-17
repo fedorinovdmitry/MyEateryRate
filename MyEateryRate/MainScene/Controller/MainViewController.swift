@@ -47,27 +47,25 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - TableView data source
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         return restaurantNames.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellID", for: indexPath)
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellID",
+                                                 for: indexPath) as! EateryViewCell
         
-        let eateryName = restaurantNames[indexPath.row]
-        cell.textLabel?.text = eateryName
-        cell.imageView?.image = UIImage(named: eateryName)
-        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
-        
-        cell.imageView?.clipsToBounds = true
-        
+        cell.configure(with: restaurantNames[indexPath.row])
         return cell
     }
     
     
     // MARK: - TableView delegate
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView,
+                   heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 85
     }
 }
