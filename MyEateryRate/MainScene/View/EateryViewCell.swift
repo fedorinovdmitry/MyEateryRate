@@ -14,6 +14,8 @@ class EateryViewCell: UITableViewCell {
     
     // MARK: - Constants
     
+    static let identefier = "eateryCell"
+    
     // MARK: - Outlets
     
     @IBOutlet weak var imageOfPlace: UIImageView!
@@ -28,19 +30,30 @@ class EateryViewCell: UITableViewCell {
     
     // MARK: - Init
     
-    // MARK: - LifeStyle ViewController
+    // MARK: - LifeStyle
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+    }
+    
     
     // MARK: - IBAction
     
     // MARK: - Public methods
     
-    func configure(with eatery:String){
-        nameLabel.text = eatery
+    func configure(with eatery: Eatery){
+        nameLabel.text = eatery.name
         
-        imageOfPlace.image = UIImage(named: eatery)
+        imageOfPlace.image = UIImage(named: eatery.imageName)
         imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
         imageOfPlace.clipsToBounds = true
+        
+        locationLabel.text = eatery.location
+        
+        typeLabel.text = eatery.type
     }
+    
     
     // MARK: - Private methods
     

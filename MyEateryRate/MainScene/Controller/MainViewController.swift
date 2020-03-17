@@ -14,12 +14,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     
-    let restaurantNames = [
-        "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-        "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-        "Speak Easy", "Morris Pub", "Вкусные истории",
-        "Классик", "Love&Life", "Шок", "Бочка"
-    ]
+    let eateries = Eatery.getEateries()
     
     
     // MARK: - Outlets
@@ -40,6 +35,9 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
 
+    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
+        
+    }
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -49,23 +47,20 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return restaurantNames.count
+        return eateries.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellID",
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: EateryViewCell.identefier,
                                                  for: indexPath) as! EateryViewCell
         
-        cell.configure(with: restaurantNames[indexPath.row])
+        cell.configure(with: eateries[indexPath.row])
         return cell
     }
     
     
     // MARK: - TableView delegate
     
-    func tableView(_ tableView: UITableView,
-                   heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 85
-    }
 }

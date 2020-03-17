@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314D2420C2C900EADEEE /* EateryViewCell.swift */; };
+		491831502420D09900EADEEE /* Eatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314F2420D09900EADEEE /* Eatery.swift */; };
+		491831522420D33000EADEEE /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491831512420D33000EADEEE /* TableViewCell.swift */; };
+		491831542421572200EADEEE /* NewEateryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491831532421572200EADEEE /* NewEateryViewController.swift */; };
 		499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D2241F8B31005E19EE /* AppDelegate.swift */; };
 		499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D4241F8B31005E19EE /* SceneDelegate.swift */; };
 		499895DA241F8B31005E19EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895D8241F8B31005E19EE /* Main.storyboard */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		4918314D2420C2C900EADEEE /* EateryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryViewCell.swift; sourceTree = "<group>"; };
+		4918314F2420D09900EADEEE /* Eatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eatery.swift; sourceTree = "<group>"; };
+		491831512420D33000EADEEE /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		491831532421572200EADEEE /* NewEateryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEateryViewController.swift; sourceTree = "<group>"; };
 		499895CF241F8B30005E19EE /* MyEateryRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEateryRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499895D2241F8B31005E19EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499895D4241F8B31005E19EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 		499895EF241F9C95005E19EE /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4918314F2420D09900EADEEE /* Eatery.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -139,6 +146,7 @@
 			children = (
 				499895D8241F8B31005E19EE /* Main.storyboard */,
 				4918314D2420C2C900EADEEE /* EateryViewCell.swift */,
+				491831512420D33000EADEEE /* TableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -147,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				499895E6241F9A75005E19EE /* MainViewController.swift */,
+				491831532421572200EADEEE /* NewEateryViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -232,6 +241,9 @@
 				4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */,
 				499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
+				491831542421572200EADEEE /* NewEateryViewController.swift in Sources */,
+				491831522420D33000EADEEE /* TableViewCell.swift in Sources */,
+				491831502420D09900EADEEE /* Eatery.swift in Sources */,
 				499895E7241F9A75005E19EE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
