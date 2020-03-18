@@ -5,32 +5,25 @@
 //  Created by Дмитрий Федоринов on 17.03.2020.
 //  Copyright © 2020 Дмитрий Федоринов. All rights reserved.
 
-import UIKit
+import RealmSwift
 
-struct Eatery {
-    
-    var name: String
-    var location: String?
-    var type: String?
-    var image: UIImage?
-    var restaurantNames: String?
-    
-    static private let restaurantNames = [
-        "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
-        "Индокитай", "X.O", "Балкан Гриль", "Sherlock Holmes",
-        "Speak Easy", "Morris Pub", "Вкусные истории",
-        "Классик", "Love&Life", "Шок", "Бочка"
-    ]
 
-    static func getEateries() -> [Eatery] {
-        var eateries = [Eatery]()
-        for eateryName in restaurantNames {
-            eateries.append(Eatery(name: eateryName,
-                                   location: "Орел",
-                                   type: "Ресторан",
-                                   image: nil,
-                                   restaurantNames: eateryName))
-        }
-        return eateries
+class Eatery: Object {
+    
+    @objc dynamic var name = ""
+    @objc dynamic var location: String?
+    @objc dynamic var type: String?
+    @objc dynamic var imageData: Data?
+    
+    convenience init(name: String,
+                     location: String?,
+                     type: String?,
+                     imageData: Data?) {
+        self.init()
+        
+        self.name = name
+        self.location = location
+        self.type = type
+        self.imageData = imageData
     }
 }

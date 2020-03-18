@@ -15,9 +15,9 @@ class NewEateryViewController: UITableViewController {
     // MARK: - Constants
     
     // MARK: - Outlets
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var eateryImage: UIImageView!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var eateryName: UITextField!
     @IBOutlet weak var eateryLocation: UITextField!
     @IBOutlet weak var eateryType: UITextField!
@@ -25,12 +25,9 @@ class NewEateryViewController: UITableViewController {
     
     // MARK: - Public Properties
     
-    //MARK: Depends
+    var imageIsChanged = false
     
     // MARK: - Private Properties
-    
-    var newEatery: Eatery?
-    var imageIsChanged = false
     
     // MARK: - Init
     
@@ -38,10 +35,12 @@ class NewEateryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.tableFooterView = UIView()
         saveButton.isEnabled = false
-        eateryName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        eateryName.addTarget(self,
+                             action: #selector(textFieldChanged),
+                             for: .editingChanged)
     }
     
     
@@ -64,11 +63,15 @@ class NewEateryViewController: UITableViewController {
             image = #imageLiteral(resourceName: "imagePlaceholder")
         }
         
-        newEatery = Eatery(name: eateryName.text ?? "",
-                           location: eateryLocation.text,
-                           type: eateryType.text,
-                           image: image,
-                           restaurantNames: nil)
+        let imageData = image?.pngData()
+        
+        let newEatery = Eatery(name: eateryName.text!,
+                               location: eateryLocation.text,
+                               type: eateryType.text,
+                               imageData: imageData)
+        
+        StorageManager.sharedInstance.saveObject(newEatery)
+        
     }
     
     // MARK: - Private methods

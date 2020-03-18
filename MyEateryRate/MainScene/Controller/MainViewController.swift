@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainViewController: UIViewController {
     
@@ -14,7 +15,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     
-    var eateries = Eatery.getEateries()
+    var eateries: Results<Eatery>!
     
     
     // MARK: - Outlets
@@ -30,6 +31,12 @@ class MainViewController: UIViewController {
     
     // MARK: - LifeStyle ViewController
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        eateries = realm.objects(Eatery.self)
+    }
+    
     // MARK: - IBAction
     
     // MARK: - Public methods
@@ -40,8 +47,8 @@ class MainViewController: UIViewController {
 
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         guard let newEateryVC = segue.source as? NewEateryViewController else { return }
+        
         newEateryVC.saveNewEatery()
-        eateries.append(newEateryVC.newEatery!)
         tableView.reloadData()
     }
 }
@@ -53,14 +60,12 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
-        return eateries.count
+        return eateries.isEmpty ? 0 : eateries.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: EateryViewCell.identefier,
-                                                 for: indexPath) as! EateryViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: EateryViewCell.identefier, for: indexPath) as! EateryViewCell
         
         cell.configure(with: eateries[indexPath.row])
         return cell

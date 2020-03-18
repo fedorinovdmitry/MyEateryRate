@@ -50,11 +50,7 @@ class EateryViewCell: UITableViewCell {
         
         typeLabel.text = eatery.type
         
-        if eatery.image == nil {
-            imageOfPlace.image = UIImage(named: eatery.restaurantNames!)
-        } else {
-            imageOfPlace.image = eatery.image
-        }
+        imageOfPlace.image = UIImage(data: eatery.imageData!)
         
         imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
         imageOfPlace.clipsToBounds = true

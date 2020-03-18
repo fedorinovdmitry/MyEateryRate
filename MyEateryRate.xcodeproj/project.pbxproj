@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314D2420C2C900EADEEE /* EateryViewCell.swift */; };
 		491831502420D09900EADEEE /* Eatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314F2420D09900EADEEE /* Eatery.swift */; };
 		491831542421572200EADEEE /* NewEateryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491831532421572200EADEEE /* NewEateryViewController.swift */; };
+		495A21382422ABF100CD53BA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A21372422ABF100CD53BA /* StorageManager.swift */; };
 		499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D2241F8B31005E19EE /* AppDelegate.swift */; };
 		499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D4241F8B31005E19EE /* SceneDelegate.swift */; };
 		499895DA241F8B31005E19EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895D8241F8B31005E19EE /* Main.storyboard */; };
@@ -20,12 +21,15 @@
 		49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7EDE7242220ED008E234D /* UIAlertFactory.swift */; };
 		49A7EDEF2422750A008E234D /* AddPhotoAllert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7EDEE2422750A008E234D /* AddPhotoAllert.swift */; };
 		49A7EDF124227AF9008E234D /* ImagePickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7EDF024227AF9008E234D /* ImagePickerDelegate.swift */; };
+		64D300EE5AFC1C9D97875EDF /* Pods_MyEateryRate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 094322273840DEAD347ECFC1 /* Pods_MyEateryRate.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		094322273840DEAD347ECFC1 /* Pods_MyEateryRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEateryRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4918314D2420C2C900EADEEE /* EateryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryViewCell.swift; sourceTree = "<group>"; };
 		4918314F2420D09900EADEEE /* Eatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eatery.swift; sourceTree = "<group>"; };
 		491831532421572200EADEEE /* NewEateryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEateryViewController.swift; sourceTree = "<group>"; };
+		495A21372422ABF100CD53BA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		499895CF241F8B30005E19EE /* MyEateryRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEateryRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499895D2241F8B31005E19EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499895D4241F8B31005E19EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,6 +42,8 @@
 		49A7EDE7242220ED008E234D /* UIAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertFactory.swift; sourceTree = "<group>"; };
 		49A7EDEE2422750A008E234D /* AddPhotoAllert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPhotoAllert.swift; sourceTree = "<group>"; };
 		49A7EDF024227AF9008E234D /* ImagePickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerDelegate.swift; sourceTree = "<group>"; };
+		7C6FE41E92E6EA0ECFC97DF6 /* Pods-MyEateryRate.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEateryRate.release.xcconfig"; path = "Target Support Files/Pods-MyEateryRate/Pods-MyEateryRate.release.xcconfig"; sourceTree = "<group>"; };
+		855019EFF70ACCB23F6DD736 /* Pods-MyEateryRate.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyEateryRate.debug.xcconfig"; path = "Target Support Files/Pods-MyEateryRate/Pods-MyEateryRate.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D300EE5AFC1C9D97875EDF /* Pods_MyEateryRate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +63,8 @@
 			children = (
 				499895D1241F8B31005E19EE /* MyEateryRate */,
 				499895D0241F8B30005E19EE /* Products */,
+				9F0A2E3B6ED534E9022B4532 /* Pods */,
+				FE581DADE8DEBD2316C6AFCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +187,7 @@
 			children = (
 				49A7EDE524222058008E234D /* DependsFactory.swift */,
 				49A7EDE7242220ED008E234D /* UIAlertFactory.swift */,
+				495A21372422ABF100CD53BA /* StorageManager.swift */,
 			);
 			path = Assembly;
 			sourceTree = "<group>";
@@ -192,6 +202,23 @@
 			path = NewEateryViewController;
 			sourceTree = "<group>";
 		};
+		9F0A2E3B6ED534E9022B4532 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				855019EFF70ACCB23F6DD736 /* Pods-MyEateryRate.debug.xcconfig */,
+				7C6FE41E92E6EA0ECFC97DF6 /* Pods-MyEateryRate.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		FE581DADE8DEBD2316C6AFCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				094322273840DEAD347ECFC1 /* Pods_MyEateryRate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -199,9 +226,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 499895E3241F8B37005E19EE /* Build configuration list for PBXNativeTarget "MyEateryRate" */;
 			buildPhases = (
+				97C8E6B824B764AC1E0064A7 /* [CP] Check Pods Manifest.lock */,
 				499895CB241F8B30005E19EE /* Sources */,
 				499895CC241F8B30005E19EE /* Frameworks */,
 				499895CD241F8B30005E19EE /* Resources */,
+				3BE0386F3FB2844ABC724980 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -258,6 +287,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3BE0386F3FB2844ABC724980 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyEateryRate/Pods-MyEateryRate-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MyEateryRate/Pods-MyEateryRate-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MyEateryRate/Pods-MyEateryRate-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97C8E6B824B764AC1E0064A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MyEateryRate-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		499895CB241F8B30005E19EE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -265,6 +336,7 @@
 			files = (
 				4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */,
 				499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */,
+				495A21382422ABF100CD53BA /* StorageManager.swift in Sources */,
 				49A7EDE624222058008E234D /* DependsFactory.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
 				49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */,
@@ -414,6 +486,7 @@
 		};
 		499895E4241F8B37005E19EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 855019EFF70ACCB23F6DD736 /* Pods-MyEateryRate.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -432,6 +505,7 @@
 		};
 		499895E5241F8B37005E19EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C6FE41E92E6EA0ECFC97DF6 /* Pods-MyEateryRate.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
