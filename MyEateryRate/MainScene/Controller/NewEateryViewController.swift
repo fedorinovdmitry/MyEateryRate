@@ -41,7 +41,10 @@ class NewEateryViewController: UITableViewController {
     
     // MARK: - Private methods
     
-    private func createCustomAlert() {
+    // MARK:
+    private func addPhotoAlert() {
+        
+        
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,
                                             preferredStyle: .actionSheet)
@@ -50,10 +53,18 @@ class NewEateryViewController: UITableViewController {
                                    style: .default) { _ in
             self.chooseImagePicker(source: .camera)
         }
+        let cameraIcon = #imageLiteral(resourceName: "camera")
+        camera.setValue(cameraIcon, forKey: "image")
+        camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
         let photo = UIAlertAction(title: "Photo",
                                   style: .default) { _ in
             self.chooseImagePicker(source: .photoLibrary)
         }
+        let photoIcon = #imageLiteral(resourceName: "photo")
+        photo.setValue(photoIcon, forKey: "image")
+        photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+        
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         actionSheet.addActions(actions: [camera,
                                          photo,
@@ -70,7 +81,7 @@ class NewEateryViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 0 {
-            createCustomAlert()
+            addPhotoAlert()
         } else {
             view.endEditing(true)
         }
