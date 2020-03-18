@@ -17,6 +17,8 @@
 		499895DC241F8B37005E19EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 499895DB241F8B37005E19EE /* Assets.xcassets */; };
 		499895DF241F8B37005E19EE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895DD241F8B37005E19EE /* LaunchScreen.storyboard */; };
 		499895E7241F9A75005E19EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895E6241F9A75005E19EE /* MainViewController.swift */; };
+		49A7EDE624222058008E234D /* DependsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7EDE524222058008E234D /* DependsFactory.swift */; };
+		49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A7EDE7242220ED008E234D /* UIAlertFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		499895DE241F8B37005E19EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		499895E0241F8B37005E19EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		499895E6241F9A75005E19EE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		49A7EDE524222058008E234D /* DependsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependsFactory.swift; sourceTree = "<group>"; };
+		49A7EDE7242220ED008E234D /* UIAlertFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,7 @@
 				499895EA241F9AE1005E19EE /* View */,
 				499895E8241F9A84005E19EE /* Controller */,
 				499895ED241F9C4A005E19EE /* Services */,
+				49A7EDE42422200F008E234D /* Assembly */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -165,6 +170,15 @@
 			children = (
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		49A7EDE42422200F008E234D /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				49A7EDE524222058008E234D /* DependsFactory.swift */,
+				49A7EDE7242220ED008E234D /* UIAlertFactory.swift */,
+			);
+			path = Assembly;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,7 +254,9 @@
 			files = (
 				4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */,
 				499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */,
+				49A7EDE624222058008E234D /* DependsFactory.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
+				49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */,
 				491831542421572200EADEEE /* NewEateryViewController.swift in Sources */,
 				491831522420D33000EADEEE /* TableViewCell.swift in Sources */,
 				491831502420D09900EADEEE /* Eatery.swift in Sources */,
