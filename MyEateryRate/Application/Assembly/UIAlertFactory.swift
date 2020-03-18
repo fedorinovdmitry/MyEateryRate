@@ -6,7 +6,6 @@
 //  Copyright © 2020 Дмитрий Федоринов. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 ///Фабрика по создания кастомных алертов

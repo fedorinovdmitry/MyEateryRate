@@ -43,15 +43,23 @@ class EateryViewCell: UITableViewCell {
     // MARK: - Public methods
     
     func configure(with eatery: Eatery){
-        nameLabel.text = eatery.name
         
-        imageOfPlace.image = UIImage(named: eatery.imageName)
-        imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
-        imageOfPlace.clipsToBounds = true
+        nameLabel.text = eatery.name
         
         locationLabel.text = eatery.location
         
         typeLabel.text = eatery.type
+        
+        if eatery.image == nil {
+            imageOfPlace.image = UIImage(named: eatery.restaurantNames!)
+        } else {
+            imageOfPlace.image = eatery.image
+        }
+        
+        imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
+        imageOfPlace.clipsToBounds = true
+        
+        
     }
     
     

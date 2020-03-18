@@ -4,16 +4,16 @@
 //
 //  Created by Дмитрий Федоринов on 17.03.2020.
 //  Copyright © 2020 Дмитрий Федоринов. All rights reserved.
-//
 
-import Foundation
+import UIKit
 
 struct Eatery {
     
     var name: String
-    var location: String
-    var type: String
-    var imageName: String
+    var location: String?
+    var type: String?
+    var image: UIImage?
+    var restaurantNames: String?
     
     static private let restaurantNames = [
         "Burger Heroes", "Kitchen", "Bonsai", "Дастархан",
@@ -28,7 +28,8 @@ struct Eatery {
             eateries.append(Eatery(name: eateryName,
                                    location: "Орел",
                                    type: "Ресторан",
-                                   imageName: eateryName))
+                                   image: nil,
+                                   restaurantNames: eateryName))
         }
         return eateries
     }

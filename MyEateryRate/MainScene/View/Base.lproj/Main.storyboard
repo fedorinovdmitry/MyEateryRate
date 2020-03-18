@@ -97,6 +97,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="Sb4-8V-lxN" id="unz-3V-l6g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,13 +253,21 @@
                     <navigationItem key="navigationItem" title="New Eatery" id="s1X-WN-au0">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RB7-GA-thw">
                             <connections>
-                                <segue destination="DUR-1p-BHH" kind="unwind" unwindAction="cancelAction:" id="cMz-im-eVw"/>
+                                <action selector="cancelAction:" destination="1DB-M5-rpS" id="Io8-v6-91d"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J97-bb-3el"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="J97-bb-3el">
+                            <connections>
+                                <segue destination="DUR-1p-BHH" kind="unwind" unwindAction="unwindSegue:" id="Erp-ST-MBU"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfEatery" destination="Gk8-y4-cTz" id="Cxe-Q8-kUI"/>
+                        <outlet property="eateryImage" destination="Gk8-y4-cTz" id="Cxe-Q8-kUI"/>
+                        <outlet property="eateryLocation" destination="30g-Mm-NxL" id="wfR-yO-9bI"/>
+                        <outlet property="eateryName" destination="QcB-kJ-ql9" id="TRf-rh-qGN"/>
+                        <outlet property="eateryType" destination="DI3-ql-6F9" id="LkH-sb-ImT"/>
+                        <outlet property="saveButton" destination="J97-bb-3el" id="UvT-2w-bg4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXL-1M-GOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

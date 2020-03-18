@@ -14,10 +14,13 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     
-    let eateries = Eatery.getEateries()
+    var eateries = Eatery.getEateries()
     
     
     // MARK: - Outlets
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     
     // MARK: - Public Properties
     
@@ -35,8 +38,11 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
 
-    @IBAction func cancelAction(_ segue: UIStoryboardSegue) {
-        
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        guard let newEateryVC = segue.source as? NewEateryViewController else { return }
+        newEateryVC.saveNewEatery()
+        eateries.append(newEateryVC.newEatery!)
+        tableView.reloadData()
     }
 }
 
