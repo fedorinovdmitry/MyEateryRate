@@ -74,4 +74,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - TableView delegate
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let eatery = eateries[indexPath.row]
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (_, _, _) in
+            StorageManager.sharedInstance.deleteObject(eatery)
+            tableView.deleteRows(at: [indexPath],
+                                 with: .automatic)
+        }
+        deleteAction.backgroundColor = .red
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }

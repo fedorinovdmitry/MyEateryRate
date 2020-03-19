@@ -19,4 +19,10 @@ class StorageManager {
             realm.add(eatery)
         }
     }
+    
+    func deleteObject(_ eatery: Eatery) {
+        try! realm.write {
+            realm.delete(eatery)
+        }
+    }
 }
