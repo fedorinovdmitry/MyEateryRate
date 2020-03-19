@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--My Places-->
+        <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="MyEateryRate" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,8 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZTa-O6-wOY">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Date"/>
+                                    <segment title="Name"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="BYZ-38-t0r" eventType="valueChanged" id="zWg-O3-qLD"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sb4-8V-lxN">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eateryCell" id="0xT-Rn-AUw" customClass="EateryViewCell" customModule="MyEateryRate" customModuleProvider="target">
@@ -85,13 +95,22 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sb4-8V-lxN" secondAttribute="trailing" id="7uk-99-v4u"/>
-                            <constraint firstItem="Sb4-8V-lxN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8Mb-or-kWN"/>
                             <constraint firstItem="Sb4-8V-lxN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C8Q-JV-llz"/>
                             <constraint firstItem="Sb4-8V-lxN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IV1-3T-dWm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZTa-O6-wOY" secondAttribute="trailing" id="KUt-d2-o6y"/>
+                            <constraint firstItem="Sb4-8V-lxN" firstAttribute="top" secondItem="ZTa-O6-wOY" secondAttribute="bottom" constant="1" id="NuP-pK-ulZ"/>
+                            <constraint firstItem="ZTa-O6-wOY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PBc-br-pFK"/>
+                            <constraint firstItem="ZTa-O6-wOY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rnt-EI-6A6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="HL2-sV-4I7">
+                    <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="HL2-sV-4I7">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="aPl-qD-NPe">
+                            <connections>
+                                <action selector="reversedSorting:" destination="BYZ-38-t0r" id="Xgt-1w-sbO"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dvf-Ob-fjm">
                             <connections>
                                 <segue destination="9gJ-aj-hbW" kind="presentation" modalTransitionStyle="coverVertical" id="PZ3-Gu-Prx"/>
@@ -99,6 +118,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="reversedSortingButton" destination="aPl-qD-NPe" id="1E0-z6-S98"/>
+                        <outlet property="segmentedControl" destination="ZTa-O6-wOY" id="jjz-oN-xj0"/>
                         <outlet property="tableView" destination="Sb4-8V-lxN" id="unz-3V-l6g"/>
                     </connections>
                 </viewController>
@@ -317,6 +338,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
     </resources>
     <inferredMetricsTieBreakers>

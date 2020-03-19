@@ -15,15 +15,19 @@ class MainViewController: UIViewController {
     
     // MARK: - Constants
     
-    var eateries: Results<Eatery>!
-    
-    
     // MARK: - Outlets
+    
+    @IBOutlet weak var reversedSortingButton: UIBarButtonItem!
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     @IBOutlet weak var tableView: UITableView!
     
     
     // MARK: - Public Properties
+    
+    var eateries: Results<Eatery>!
+    var ascendingSorting = true
     
     // MARK: - Private Properties
     
@@ -39,9 +43,35 @@ class MainViewController: UIViewController {
     
     // MARK: - IBAction
     
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    
+    @IBAction func reversedSorting(_ sender: Any) {
+        ascendingSorting.toggle()
+        if ascendingSorting {
+            reversedSortingButton.image = #imageLiteral(resourceName: "AZ")
+        } else {
+            reversedSortingButton.image = #imageLiteral(resourceName: "ZA")
+        }
+        sorting()
+    }
+    
     // MARK: - Public methods
     
     // MARK: - Private methods
+    
+    private func sorting() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            eateries = eateries.sorted(byKeyPath: "date",
+                                       ascending: ascendingSorting)
+        } else {
+            eateries = eateries.sorted(byKeyPath: "name",
+                                       ascending: ascendingSorting)
+        }
+        tableView.reloadData()
+    }
+    
     
     // MARK: - Navigation
 
