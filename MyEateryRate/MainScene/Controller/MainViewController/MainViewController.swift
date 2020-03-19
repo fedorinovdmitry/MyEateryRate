@@ -23,13 +23,22 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    
-    // MARK: - Public Properties
+    // MARK: - Properties
     
     var eateries: Results<Eatery>!
-    var ascendingSorting = true
     
-    // MARK: - Private Properties
+    private var ascendingSorting = true
+    
+    //переменные для поиска 
+    let searchController = UISearchController(searchResultsController: nil)
+    var filtredEateries: Results<Eatery>!
+    var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
     
     // MARK: - Init
     
@@ -39,6 +48,9 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         
         eateries = realm.objects(Eatery.self)
+        
+        ///Setup the searchController
+        configSearchController()
     }
     
     // MARK: - IBAction
@@ -78,7 +90,14 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
-            let eatery = eateries[indexPath.row]
+            
+            var eatery = Eatery()
+            if isFiltering {
+                eatery = filtredEateries[indexPath.row]
+            } else {
+                eatery = eateries[indexPath.row]
+            }
+            
             let newEateryVC = segue.destination as! NewEateryViewController
             newEateryVC.currentEatery = eatery
         }
@@ -99,6 +118,9 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filtredEateries.count
+        }
         return eateries.isEmpty ? 0 : eateries.count
     }
     
@@ -106,7 +128,15 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EateryViewCell.identefier, for: indexPath) as! EateryViewCell
         
-        cell.configure(with: eateries[indexPath.row])
+        var eatery = Eatery()
+        
+        if isFiltering {
+            eatery = filtredEateries[indexPath.row]
+        } else {
+            eatery = eateries[indexPath.row]
+        }
+        
+        cell.configure(with: eatery)
         return cell
     }
     

@@ -11,6 +11,7 @@
 		491831502420D09900EADEEE /* Eatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314F2420D09900EADEEE /* Eatery.swift */; };
 		491831542421572200EADEEE /* NewEateryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 491831532421572200EADEEE /* NewEateryViewController.swift */; };
 		495A21382422ABF100CD53BA /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A21372422ABF100CD53BA /* StorageManager.swift */; };
+		495A213B24239D4F00CD53BA /* UISearchResultsUpdating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A213A24239D4F00CD53BA /* UISearchResultsUpdating.swift */; };
 		499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D2241F8B31005E19EE /* AppDelegate.swift */; };
 		499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499895D4241F8B31005E19EE /* SceneDelegate.swift */; };
 		499895DA241F8B31005E19EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 499895D8241F8B31005E19EE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		4918314F2420D09900EADEEE /* Eatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eatery.swift; sourceTree = "<group>"; };
 		491831532421572200EADEEE /* NewEateryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEateryViewController.swift; sourceTree = "<group>"; };
 		495A21372422ABF100CD53BA /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		495A213A24239D4F00CD53BA /* UISearchResultsUpdating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchResultsUpdating.swift; sourceTree = "<group>"; };
 		499895CF241F8B30005E19EE /* MyEateryRate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyEateryRate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		499895D2241F8B31005E19EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		499895D4241F8B31005E19EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +60,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		495A213924239BDF00CD53BA /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				499895E6241F9A75005E19EE /* MainViewController.swift */,
+				495A213A24239D4F00CD53BA /* UISearchResultsUpdating.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
 		499895C6241F8B30005E19EE = {
 			isa = PBXGroup;
 			children = (
@@ -169,8 +180,8 @@
 		499895F1241F9CBA005E19EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				495A213924239BDF00CD53BA /* MainViewController */,
 				49A7EDED242274D6008E234D /* NewEateryViewController */,
-				499895E6241F9A75005E19EE /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -340,6 +351,7 @@
 				49A7EDE624222058008E234D /* DependsFactory.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
 				49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */,
+				495A213B24239D4F00CD53BA /* UISearchResultsUpdating.swift in Sources */,
 				491831542421572200EADEEE /* NewEateryViewController.swift in Sources */,
 				491831502420D09900EADEEE /* Eatery.swift in Sources */,
 				49A7EDF124227AF9008E234D /* ImagePickerDelegate.swift in Sources */,
