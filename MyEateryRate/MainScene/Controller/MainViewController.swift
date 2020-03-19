@@ -45,10 +45,19 @@ class MainViewController: UIViewController {
     
     // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
+            let eatery = eateries[indexPath.row]
+            let newEateryVC = segue.destination as! NewEateryViewController
+            newEateryVC.currentEatery = eatery
+        }
+    }
+    
     @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
         guard let newEateryVC = segue.source as? NewEateryViewController else { return }
         
-        newEateryVC.saveNewEatery()
+        newEateryVC.saveEatery()
         tableView.reloadData()
     }
 }

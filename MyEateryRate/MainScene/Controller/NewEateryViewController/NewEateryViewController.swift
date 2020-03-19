@@ -15,6 +15,7 @@ class NewEateryViewController: UITableViewController {
     // MARK: - Constants
     
     // MARK: - Outlets
+    
     @IBOutlet weak var saveButton: UIBarButtonItem!
     
     @IBOutlet weak var eateryImage: UIImageView!
@@ -25,6 +26,7 @@ class NewEateryViewController: UITableViewController {
     
     // MARK: - Public Properties
     
+    var currentEatery: Eatery?
     var imageIsChanged = false
     
     // MARK: - Private Properties
@@ -41,6 +43,7 @@ class NewEateryViewController: UITableViewController {
         eateryName.addTarget(self,
                              action: #selector(textFieldChanged),
                              for: .editingChanged)
+        setupEditScreen()
     }
     
     
@@ -53,7 +56,7 @@ class NewEateryViewController: UITableViewController {
     
     // MARK: - Public methods
     
-    func saveNewEatery() {
+    func saveEatery() {
         
         var image: UIImage?
         
@@ -69,13 +72,56 @@ class NewEateryViewController: UITableViewController {
                                location: eateryLocation.text,
                                type: eateryType.text,
                                imageData: imageData)
-        
-        StorageManager.sharedInstance.saveObject(newEatery)
+        if currentEatery != nil {
+            try! realm.write {
+                currentEatery?.name = newEatery.name
+                currentEatery?.location = newEatery.location
+                currentEatery?.imageData = newEatery.imageData
+                currentEatery?.type = newEatery.type
+            }
+        } else {
+            StorageManager.sharedInstance.saveObject(newEatery)
+        }
         
     }
     
     // MARK: - Private methods
     
+    //MARK: Edit eatery screen setup
+    
+    private func setupEditScreen() {
+        if let eatery = currentEatery {
+            
+            setupNavigationBar()
+            imageIsChanged = true
+            setupTextView(eatery: eatery)
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "",
+                                                        style: .plain,
+                                                        target: nil,
+                                                        action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentEatery?.name
+        saveButton.isEnabled = true
+    }
+    
+    private func setupTextView(eatery: Eatery) {
+        guard let data = eatery.imageData,
+            let image = UIImage(data: data) else {
+                return
+        }
+        
+        eateryImage.image = image
+        eateryImage.contentMode = .scaleAspectFill
+        eateryName.text = eatery.name
+        eateryLocation.text = eatery.location
+        eateryType.text = eatery.type
+    }
     
     // MARK: - Navigation
 

@@ -72,6 +72,7 @@
                                             <outlet property="locationLabel" destination="fN5-E6-GYH" id="EFc-TQ-Xa0"/>
                                             <outlet property="nameLabel" destination="kd6-ib-UMf" id="xIm-Rf-Qki"/>
                                             <outlet property="typeLabel" destination="Uz3-zW-xu4" id="dRh-u8-tAA"/>
+                                            <segue destination="1DB-M5-rpS" kind="show" identifier="showDetail" id="ED3-Zz-NpL"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -90,7 +91,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="My Places" id="HL2-sV-4I7">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="HL2-sV-4I7">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Dvf-Ob-fjm">
                             <connections>
                                 <segue destination="9gJ-aj-hbW" kind="presentation" modalTransitionStyle="coverVertical" id="PZ3-Gu-Prx"/>
@@ -110,7 +111,7 @@
             <objects>
                 <tableViewController id="1DB-M5-rpS" customClass="NewEateryViewController" customModule="MyEateryRate" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4c1-gh-bpr">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="16" minY="0.0" maxX="16" maxY="0.0"/>
@@ -125,7 +126,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="Gk8-y4-cTz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -250,7 +251,7 @@
                             <outlet property="delegate" destination="1DB-M5-rpS" id="1du-aj-Qlu"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Eatery" id="s1X-WN-au0">
+                    <navigationItem key="navigationItem" title="New Eatery" largeTitleDisplayMode="always" id="s1X-WN-au0">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RB7-GA-thw">
                             <connections>
                                 <action selector="cancelAction:" destination="1DB-M5-rpS" id="Io8-v6-91d"/>
@@ -273,15 +274,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BXL-1M-GOZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="DUR-1p-BHH" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2830.434782608696" y="107.8125"/>
+            <point key="canvasLocation" x="1951" y="110"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="qb3-uB-PoQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SgC-2O-Yks" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a5X-f2-YcW">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="a5X-f2-YcW">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
@@ -312,10 +313,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="w3k-LS-JDw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1921.7391304347827" y="107.8125"/>
+            <point key="canvasLocation" x="1951" y="-608"/>
         </scene>
     </scenes>
     <resources>
         <image name="Photo" width="195" height="196"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ED3-Zz-NpL"/>
+    </inferredMetricsTieBreakers>
 </document>
