@@ -26,7 +26,7 @@
                                 </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sb4-8V-lxN">
-                                <rect key="frame" x="0.0" y="120" width="414" height="742"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="776"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="eateryCell" id="0xT-Rn-AUw" customClass="EateryViewCell" customModule="MyEateryRate" customModuleProvider="target">
@@ -96,7 +96,7 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Sb4-8V-lxN" secondAttribute="trailing" id="7uk-99-v4u"/>
                             <constraint firstItem="Sb4-8V-lxN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="C8Q-JV-llz"/>
-                            <constraint firstItem="Sb4-8V-lxN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IV1-3T-dWm"/>
+                            <constraint firstItem="Sb4-8V-lxN" firstAttribute="bottom" secondItem="8bC-Xf-vdC" secondAttribute="bottom" id="IV1-3T-dWm"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZTa-O6-wOY" secondAttribute="trailing" id="KUt-d2-o6y"/>
                             <constraint firstItem="Sb4-8V-lxN" firstAttribute="top" secondItem="ZTa-O6-wOY" secondAttribute="bottom" constant="1" id="NuP-pK-ulZ"/>
                             <constraint firstItem="ZTa-O6-wOY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="PBc-br-pFK"/>
@@ -147,7 +147,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="Gk8-y4-cTz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="250.00000000000006"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -261,6 +261,23 @@
                                                 <constraint firstAttribute="trailing" secondItem="ZRh-g8-m6c" secondAttribute="trailing" constant="16" id="XRW-ta-HfX"/>
                                                 <constraint firstAttribute="bottom" secondItem="ZRh-g8-m6c" secondAttribute="bottom" constant="8" id="ce9-Qb-7dL"/>
                                                 <constraint firstItem="ZRh-g8-m6c" firstAttribute="top" secondItem="7Bd-rM-1Xf" secondAttribute="top" constant="8" id="oqO-fs-ACi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="145" id="mj2-Nj-MOh">
+                                        <rect key="frame" x="0.0" y="503" width="414" height="145"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="mj2-Nj-MOh" id="FG8-pb-8c1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1PU-Dg-L0f" customClass="RatingControl" customModule="MyEateryRate" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="50.5" width="252" height="44"/>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerX" secondItem="FG8-pb-8c1" secondAttribute="centerX" id="b4m-3f-jvY"/>
+                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerY" secondItem="FG8-pb-8c1" secondAttribute="centerY" id="um1-sM-5Wn"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
