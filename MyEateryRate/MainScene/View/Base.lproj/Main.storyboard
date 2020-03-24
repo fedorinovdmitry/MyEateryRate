@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SgC-2O-Yks">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SgC-2O-Yks">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -276,8 +276,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerX" secondItem="FG8-pb-8c1" secondAttribute="centerX" id="b4m-3f-jvY"/>
-                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerY" secondItem="FG8-pb-8c1" secondAttribute="centerY" id="um1-sM-5Wn"/>
+                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerX" secondItem="FG8-pb-8c1" secondAttribute="centerX" id="Jq0-H4-vNl"/>
+                                                <constraint firstItem="1PU-Dg-L0f" firstAttribute="centerY" secondItem="FG8-pb-8c1" secondAttribute="centerY" id="k2w-Vq-Tn2"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>

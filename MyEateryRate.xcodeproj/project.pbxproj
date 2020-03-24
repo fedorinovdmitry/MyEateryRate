@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DED41BF242A628D00EEA4E0 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41BE242A628D00EEA4E0 /* RealmConfig.swift */; };
+		2DED41C1242A692000EEA4E0 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41C0242A692000EEA4E0 /* UserSettings.swift */; };
+		2DED41C3242A6C5000EEA4E0 /* FirstLaunchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41C2242A6C5000EEA4E0 /* FirstLaunchConfig.swift */; };
 		4904F4D22423DF2E00EA0384 /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4904F4D12423DF2E00EA0384 /* RatingControl.swift */; };
 		4918314E2420C2C900EADEEE /* EateryViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314D2420C2C900EADEEE /* EateryViewCell.swift */; };
 		491831502420D09900EADEEE /* Eatery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4918314F2420D09900EADEEE /* Eatery.swift */; };
@@ -28,6 +31,9 @@
 
 /* Begin PBXFileReference section */
 		094322273840DEAD347ECFC1 /* Pods_MyEateryRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEateryRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DED41BE242A628D00EEA4E0 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
+		2DED41C0242A692000EEA4E0 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSettings.swift; path = MyEateryRate/Application/Controller/AppDelegate/UserSettings.swift; sourceTree = SOURCE_ROOT; };
+		2DED41C2242A6C5000EEA4E0 /* FirstLaunchConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchConfig.swift; sourceTree = "<group>"; };
 		4904F4D12423DF2E00EA0384 /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
 		4918314D2420C2C900EADEEE /* EateryViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EateryViewCell.swift; sourceTree = "<group>"; };
 		4918314F2420D09900EADEEE /* Eatery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Eatery.swift; sourceTree = "<group>"; };
@@ -62,6 +68,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2DED41BD242A626600EEA4E0 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				499895D2241F8B31005E19EE /* AppDelegate.swift */,
+				2DED41BE242A628D00EEA4E0 /* RealmConfig.swift */,
+				2DED41C2242A6C5000EEA4E0 /* FirstLaunchConfig.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
 		495A213924239BDF00CD53BA /* MainViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +118,7 @@
 		499895E8241F9A84005E19EE /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				499895D2241F8B31005E19EE /* AppDelegate.swift */,
+				2DED41BD242A626600EEA4E0 /* AppDelegate */,
 				499895D4241F8B31005E19EE /* SceneDelegate.swift */,
 			);
 			path = Controller;
@@ -147,6 +163,7 @@
 		499895ED241F9C4A005E19EE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2DED41C0242A692000EEA4E0 /* UserSettings.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -355,11 +372,14 @@
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
 				49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */,
 				495A213B24239D4F00CD53BA /* UISearchResultsUpdating.swift in Sources */,
+				2DED41BF242A628D00EEA4E0 /* RealmConfig.swift in Sources */,
 				491831542421572200EADEEE /* NewEateryViewController.swift in Sources */,
 				491831502420D09900EADEEE /* Eatery.swift in Sources */,
 				49A7EDF124227AF9008E234D /* ImagePickerDelegate.swift in Sources */,
+				2DED41C3242A6C5000EEA4E0 /* FirstLaunchConfig.swift in Sources */,
 				4904F4D22423DF2E00EA0384 /* RatingControl.swift in Sources */,
 				49A7EDEF2422750A008E234D /* AddPhotoAllert.swift in Sources */,
+				2DED41C1242A692000EEA4E0 /* UserSettings.swift in Sources */,
 				499895E7241F9A75005E19EE /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
