@@ -26,29 +26,44 @@ class StorageManager {
         }
     }
     
+    func editingObject(editingEatery: Eatery, newEatery: Eatery) {
+        try! realm.write {
+            editingEatery.name = newEatery.name
+            editingEatery.location = newEatery.location
+            editingEatery.imageData = newEatery.imageData
+            editingEatery.type = newEatery.type
+            editingEatery.rating = newEatery.rating
+        }
+    }
+    
     func createStandartBase() {
         
         var standartEateries = [Eatery]()
         standartEateries.append(Eatery(name: "MyataLounge",
                                        location: "Moscow",
                                        type: "Hookah",
-                                       imageData: UIImage(named: "myatalounge")?.pngData()))
+                                       imageData: UIImage(named: "myatalounge")?.pngData(),
+                                       rating: 5.0))
         standartEateries.append(Eatery(name: "MCDonalds",
                                        location: "Belgorod",
                                        type: "Restaurant",
-                                       imageData: UIImage(named: "mcdonalds")?.pngData()))
+                                       imageData: UIImage(named: "mcdonalds")?.pngData(),
+                                       rating: 4.0))
         standartEateries.append(Eatery(name: "Lenta",
                                        location: "Odintcovo",
                                        type: "Hypermarket",
-                                       imageData: UIImage(named: "lenta")?.pngData()))
+                                       imageData: UIImage(named: "lenta")?.pngData(),
+                                       rating: 4.0))
         standartEateries.append(Eatery(name: "KillFish",
                                        location: "Moscow",
                                        type: "Bar",
-                                       imageData: UIImage(named: "kilfish")?.pngData()))
+                                       imageData: UIImage(named: "kilfish")?.pngData(),
+                                       rating: 2.0))
         standartEateries.append(Eatery(name: "BurgerKing",
                                        location: "Orel",
                                        type: "Restaurant",
-                                       imageData: UIImage(named: "burgerking")?.pngData()))
+                                       imageData: UIImage(named: "burgerking")?.pngData(),
+                                       rating: 3.0))
         
         for eatery in standartEateries {
             saveObject(eatery)

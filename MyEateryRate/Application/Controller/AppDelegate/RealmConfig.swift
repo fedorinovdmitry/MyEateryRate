@@ -13,7 +13,7 @@ extension AppDelegate {
     
     func realmConfig() {
         
-        let schemaVersion: UInt64 = 1
+        let schemaVersion: UInt64 = 2
         
         let config = Realm.Configuration(
             schemaVersion: schemaVersion,

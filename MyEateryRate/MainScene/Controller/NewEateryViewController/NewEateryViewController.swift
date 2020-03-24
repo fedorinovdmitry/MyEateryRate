@@ -23,6 +23,7 @@ class NewEateryViewController: UITableViewController {
     @IBOutlet weak var eateryLocation: UITextField!
     @IBOutlet weak var eateryType: UITextField!
     
+    @IBOutlet weak var ratingControl: RatingControl!
     
     // MARK: - Public Properties
     
@@ -75,14 +76,12 @@ class NewEateryViewController: UITableViewController {
         let newEatery = Eatery(name: eateryName.text!,
                                location: eateryLocation.text,
                                type: eateryType.text,
-                               imageData: imageData)
-        if currentEatery != nil {
-            try! realm.write {
-                currentEatery?.name = newEatery.name
-                currentEatery?.location = newEatery.location
-                currentEatery?.imageData = newEatery.imageData
-                currentEatery?.type = newEatery.type
-            }
+                               imageData: imageData,
+                               rating: Double(ratingControl.rating))
+        
+        if let editEatery = currentEatery {
+            StorageManager.sharedInstance.editingObject(editingEatery: editEatery,
+                                                        newEatery: newEatery)
         } else {
             StorageManager.sharedInstance.saveObject(newEatery)
         }
@@ -98,7 +97,7 @@ class NewEateryViewController: UITableViewController {
             
             setupNavigationBar()
             imageIsChanged = true
-            setupTextView(eatery: eatery)
+            setupCellsContent(eatery: eatery)
         }
     }
     
@@ -114,7 +113,7 @@ class NewEateryViewController: UITableViewController {
         saveButton.isEnabled = true
     }
     
-    private func setupTextView(eatery: Eatery) {
+    private func setupCellsContent(eatery: Eatery) {
         guard let data = eatery.imageData,
             let image = UIImage(data: data) else {
                 return
@@ -125,6 +124,7 @@ class NewEateryViewController: UITableViewController {
         eateryName.text = eatery.name
         eateryLocation.text = eatery.location
         eateryType.text = eatery.type
+        ratingControl.rating = Int(eatery.rating)
     }
     
     // MARK: - Navigation
