@@ -51,6 +51,7 @@ class MainViewController: UIViewController {
         
         ///Setup the searchController
         configSearchController()
+        
     }
     
     // MARK: - IBAction

@@ -47,29 +47,29 @@ extension StorageManager {
     func createStandartBase() {
         
         var standartEateries = [Eatery]()
-        standartEateries.append(Eatery(name: "MyataLounge",
-                                       location: "Moscow",
-                                       type: "Hookah",
+        standartEateries.append(Eatery(name: "Мята Lounge",
+                                       location: "Ярцевская ул., 34, корп. 2, Москва",
+                                       type: "Кальян-бар",
                                        imageData: UIImage(named: "myatalounge")?.pngData(),
                                        rating: 5.0))
-        standartEateries.append(Eatery(name: "MCDonalds",
-                                       location: "Belgorod",
-                                       type: "Restaurant",
+        standartEateries.append(Eatery(name: "Макдоналдс",
+                                       location: "Центральная ул., 8, дачный посёлок Лесной Городок",
+                                       type: "Быстрое питание, ресторан",
                                        imageData: UIImage(named: "mcdonalds")?.pngData(),
                                        rating: 4.0))
-        standartEateries.append(Eatery(name: "Lenta",
-                                       location: "Odintcovo",
-                                       type: "Hypermarket",
+        standartEateries.append(Eatery(name: "Лента",
+                                       location: "Можайское ш., 1А, Одинцово",
+                                       type: "Супермаркет",
                                        imageData: UIImage(named: "lenta")?.pngData(),
                                        rating: 4.0))
         standartEateries.append(Eatery(name: "KillFish",
-                                       location: "Moscow",
-                                       type: "Bar",
+                                       location: "Новослободская ул., 46, Москва",
+                                       type: "Бар, паб",
                                        imageData: UIImage(named: "kilfish")?.pngData(),
                                        rating: 2.0))
         standartEateries.append(Eatery(name: "BurgerKing",
-                                       location: "Orel",
-                                       type: "Restaurant",
+                                       location: "Московская ул., 67, Орёл",
+                                       type: "Быстрое питание",
                                        imageData: UIImage(named: "burgerking")?.pngData(),
                                        rating: 3.0))
         

@@ -66,7 +66,7 @@
                                                         </label>
                                                     </subviews>
                                                 </stackView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="132" placeholderIntrinsicHeight="20" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4YI-aH-edR" customClass="RatingControl" customModule="MyEateryRate" customModuleProvider="target">
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="20" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4YI-aH-edR" customClass="RatingControl" customModule="MyEateryRate" customModuleProvider="target">
                                                     <rect key="frame" x="284" y="33.5" width="122" height="18"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="starSize">
@@ -160,11 +160,24 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Photo" translatesAutoresizingMaskIntoConstraints="NO" id="Gk8-y4-cTz">
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r1X-BK-7F0">
+                                                    <rect key="frame" x="344" y="189" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="9y7-bV-slX"/>
+                                                        <constraint firstAttribute="width" constant="50" id="VMK-iQ-5Qm"/>
+                                                    </constraints>
+                                                    <state key="normal" image="map"/>
+                                                    <connections>
+                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="showMap" modalPresentationStyle="overFullScreen" id="dxS-h9-yKG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Gk8-y4-cTz" secondAttribute="bottom" id="JQF-E8-lgf"/>
                                                 <constraint firstItem="Gk8-y4-cTz" firstAttribute="leading" secondItem="Cas-n3-pDP" secondAttribute="leading" id="fnP-S9-2Ts"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="r1X-BK-7F0" secondAttribute="trailing" id="h9f-AQ-azw"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="r1X-BK-7F0" secondAttribute="bottom" id="p9Z-Cm-xvO"/>
                                                 <constraint firstItem="Gk8-y4-cTz" firstAttribute="top" secondItem="Cas-n3-pDP" secondAttribute="top" id="ttA-Ee-Fxu"/>
                                                 <constraint firstAttribute="trailing" secondItem="Gk8-y4-cTz" secondAttribute="trailing" id="uDw-A7-NyX"/>
                                             </constraints>
@@ -365,6 +378,16 @@
             </objects>
             <point key="canvasLocation" x="1951" y="-608"/>
         </scene>
+        <!--MapScene-->
+        <scene sceneID="Qw6-lz-pwr">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MapScene" id="FTl-u6-C68" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="tXG-v7-m7x"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ktc-i4-fWo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2740" y="60"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="ED3-Zz-NpL"/>
@@ -372,5 +395,6 @@
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="map" width="50" height="50"/>
     </resources>
 </document>

@@ -129,6 +129,15 @@ class NewEateryViewController: UITableViewController {
     
     // MARK: - Navigation
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier != "showMap" {
+            return
+        }
+        let mapVC = segue.destination as! MapViewController
+        mapVC.eatery = currentEatery
+    }
+    
+    
     // MARK: - Table view delegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -154,11 +163,8 @@ extension NewEateryViewController: UITextFieldDelegate {
     }
     
     @objc private func textFieldChanged() {
-        if eateryName.text?.isEmpty == false {
-            saveButton.isEnabled = true
-        } else {
-            saveButton.isEnabled = false
-        }
+        
+        saveButton.isEnabled = eateryName.text?.isEmpty == false ? true : false
     }
     
 }
