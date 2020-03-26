@@ -65,11 +65,8 @@ import UIKit
         //calculate the rating of selected button
         let selectedRating = index + 1
         
-        if selectedRating == rating {
-            rating = 0
-        } else {
-            rating = selectedRating
-        }
+        rating = selectedRating == rating ? 0 : selectedRating
+        
     }
     
     // MARK: - Public methods

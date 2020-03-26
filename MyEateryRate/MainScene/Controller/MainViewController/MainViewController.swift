@@ -91,12 +91,7 @@ class MainViewController: UIViewController {
         if segue.identifier == "showDetail" {
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             
-            var eatery = Eatery()
-            if isFiltering {
-                eatery = filtredEateries[indexPath.row]
-            } else {
-                eatery = eateries[indexPath.row]
-            }
+            let eatery = isFiltering ? filtredEateries[indexPath.row] : eateries[indexPath.row]
             
             let newEateryVC = segue.destination as! NewEateryViewController
             newEateryVC.currentEatery = eatery
@@ -121,20 +116,14 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         if isFiltering {
             return filtredEateries.count
         }
-        return eateries.isEmpty ? 0 : eateries.count
+        return eateries.count
     }
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: EateryViewCell.identefier, for: indexPath) as! EateryViewCell
         
-        var eatery = Eatery()
-        
-        if isFiltering {
-            eatery = filtredEateries[indexPath.row]
-        } else {
-            eatery = eateries[indexPath.row]
-        }
+        let eatery = isFiltering ? filtredEateries[indexPath.row] : eateries[indexPath.row]
         
         cell.configure(with: eatery)
         return cell

@@ -36,6 +36,14 @@ class StorageManager {
         }
     }
     
+    
+}
+
+
+//MARK: - Preinstall Eateries
+
+extension StorageManager {
+    
     func createStandartBase() {
         
         var standartEateries = [Eatery]()
