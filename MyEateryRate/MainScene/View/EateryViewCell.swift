@@ -22,6 +22,7 @@ class EateryViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     
     // MARK: - Public Properties
@@ -34,6 +35,10 @@ class EateryViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        let view = UIView(frame: CGRect(x: ratingControl.frame.minX, y: ratingControl.frame.minY, width: ratingControl.frame.width, height: ratingControl.frame.height))
+        
+        self.addSubview(view)
         
     }
     
@@ -54,6 +59,8 @@ class EateryViewCell: UITableViewCell {
         
         imageOfPlace.layer.cornerRadius = imageOfPlace.frame.size.height / 2
         imageOfPlace.clipsToBounds = true
+        
+        ratingControl.rating = Int(eatery.rating)
         
         
     }

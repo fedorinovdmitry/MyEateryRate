@@ -84,7 +84,7 @@ import UIKit
     
     private func setupButtons() {
         
-        //очишение массива кнопок для последующей замены на нужно число из сториборда
+        //очишение массива кнопок для последующей замены на нужноe число из сториборда
         for button in ratingButtons {
             removeArrangedSubview(button)
             button.removeFromSuperview()
@@ -112,6 +112,7 @@ import UIKit
         for _ in 0..<starCount {
             //create the button
             let button = UIButton()
+            
             button.setImage(emptyStar, for: .normal)
             button.setImage(filledStar, for: .selected)
             button.setImage(highlightedStar, for: .highlighted)
