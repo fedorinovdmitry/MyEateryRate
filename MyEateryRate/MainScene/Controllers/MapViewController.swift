@@ -23,11 +23,15 @@ class MapViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var mapView: MKMapView!
-    
+    @IBOutlet weak var mapPinImage: UIImageView!
+    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     // MARK: - Public Properties
     
     var eatery: Eatery?
+    var incomeSegueIdentifier = ""
+    
     
     // MARK: - Private Properties
     
@@ -35,12 +39,13 @@ class MapViewController: UIViewController {
     
     // MARK: - Init
     
+
     // MARK: - LifeStyle ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupPlacemark()
+        setupMapView()
         checkLocationServices()
     }
     
@@ -52,20 +57,25 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func centerViewInUserLocation() {
+        showUserLocation()
+    }
+    
+    @IBAction func doneButtonPressed(_ sender: Any) {
         
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            
-            mapView.setRegion(region,
-                              animated: true)
-        }
     }
     
     // MARK: - Public methods
     
     // MARK: - Private methods
+    
+    private func setupMapView() {
+        if incomeSegueIdentifier == "showEatery" {
+            setupPlacemark()
+            mapPinImage.isHidden = true
+            adressLabel.isHidden = true
+            doneButton.isHidden = true
+        }
+    }
     
     private func setupPlacemark() {
         
@@ -111,12 +121,25 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    // MARK: - Navigation
+    private func showUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion(center: location,
+                                            latitudinalMeters: regionInMeters,
+                                            longitudinalMeters: regionInMeters)
+            
+            mapView.setRegion(region,
+                              animated: true)
+        }
+    }
+    
 
     private func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
+            if incomeSegueIdentifier == "getAdress" {
+                showUserLocation()
+            }
             break
         case .denied:
             showAlertController.showGpsAccessRestriced()

@@ -44,22 +44,22 @@
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fmv-Dj-du5">
-                                                    <rect key="frame" x="96" y="8" width="180" height="69"/>
+                                                    <rect key="frame" x="96" y="8" width="54.5" height="69"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kd6-ib-UMf">
-                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="24.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="54.5" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fN5-E6-GYH">
-                                                            <rect key="frame" x="0.0" y="27.5" width="180" height="20"/>
+                                                            <rect key="frame" x="0.0" y="27.5" width="54.5" height="20"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="15"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uz3-zW-xu4">
-                                                            <rect key="frame" x="0.0" y="50.5" width="180" height="18.5"/>
+                                                            <rect key="frame" x="0.0" y="50.5" width="54.5" height="18.5"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="13"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -67,7 +67,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="20" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4YI-aH-edR" customClass="RatingControl" customModule="MyEateryRate" customModuleProvider="target">
-                                                    <rect key="frame" x="284" y="33.5" width="122" height="18"/>
+                                                    <rect key="frame" x="158.5" y="32.5" width="247.5" height="20"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="starSize">
                                                             <size key="value" width="18" height="18"/>
@@ -168,7 +168,7 @@
                                                     </constraints>
                                                     <state key="normal" image="map"/>
                                                     <connections>
-                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="showMap" modalPresentationStyle="overFullScreen" id="dxS-h9-yKG"/>
+                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="showEatery" modalPresentationStyle="overFullScreen" id="dxS-h9-yKG"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -226,16 +226,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TOd-XR-Eei">
-                                                    <rect key="frame" x="16" y="8" width="382" height="59"/>
+                                                    <rect key="frame" x="16" y="8" width="340" height="59"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8k-aQ-0Op">
-                                                            <rect key="frame" x="0.0" y="0.0" width="382" height="29"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="340" height="29"/>
                                                             <fontDescription key="fontDescription" name="AppleSDGothicNeo-Thin" family="Apple SD Gothic Neo" pointSize="24"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Eatery location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30g-Mm-NxL">
-                                                            <rect key="frame" x="0.0" y="37" width="382" height="22"/>
+                                                            <rect key="frame" x="0.0" y="37" width="340" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                                                             <connections>
@@ -244,12 +244,25 @@
                                                         </textField>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iov-3O-kg2">
+                                                    <rect key="frame" x="364" y="43.5" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="J6Y-qf-3Mh"/>
+                                                        <constraint firstAttribute="height" constant="25" id="SiC-bj-hLN"/>
+                                                    </constraints>
+                                                    <state key="normal" image="Placeholder"/>
+                                                    <connections>
+                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="getAdress" modalPresentationStyle="overFullScreen" id="hnH-Jr-G2S"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="iov-3O-kg2" secondAttribute="trailing" constant="25" id="FdS-vg-Qc2"/>
+                                                <constraint firstItem="iov-3O-kg2" firstAttribute="leading" secondItem="TOd-XR-Eei" secondAttribute="trailing" constant="8" id="GPF-Sb-j6G"/>
                                                 <constraint firstAttribute="bottom" secondItem="TOd-XR-Eei" secondAttribute="bottom" constant="8" id="OxZ-TP-xdd"/>
-                                                <constraint firstAttribute="trailing" secondItem="TOd-XR-Eei" secondAttribute="trailing" constant="16" id="Rf5-2N-98m"/>
                                                 <constraint firstItem="TOd-XR-Eei" firstAttribute="leading" secondItem="fO8-Ws-L2E" secondAttribute="leading" constant="16" id="gV9-9u-gvO"/>
                                                 <constraint firstItem="TOd-XR-Eei" firstAttribute="top" secondItem="fO8-Ws-L2E" secondAttribute="top" constant="8" id="o0e-cZ-6Rt"/>
+                                                <constraint firstItem="iov-3O-kg2" firstAttribute="centerY" secondItem="30g-Mm-NxL" secondAttribute="centerY" id="qRJ-UX-IS7"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -390,11 +403,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="hnH-Jr-G2S"/>
         <segue reference="ED3-Zz-NpL"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
+        <image name="Placeholder" width="22" height="22"/>
         <image name="map" width="50" height="50"/>
     </resources>
 </document>

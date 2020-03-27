@@ -33,31 +33,64 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FkK-w0-N7U">
-                                <rect key="frame" x="334" y="792" width="50" height="50"/>
+                                <rect key="frame" x="344" y="798" width="40" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="50" id="4BT-Mf-YMv"/>
-                                    <constraint firstAttribute="height" constant="50" id="y3P-Hn-WhS"/>
+                                    <constraint firstAttribute="width" constant="40" id="4BT-Mf-YMv"/>
+                                    <constraint firstAttribute="height" constant="40" id="y3P-Hn-WhS"/>
                                 </constraints>
                                 <state key="normal" image="Location"/>
                                 <connections>
                                     <action selector="centerViewInUserLocation" destination="Irf-8A-NWT" eventType="touchUpInside" id="xUF-wv-U0y"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Pin" translatesAutoresizingMaskIntoConstraints="NO" id="lkZ-S5-SRG">
+                                <rect key="frame" x="187" y="408" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="c10-PO-PmR"/>
+                                    <constraint firstAttribute="width" constant="40" id="vb9-He-wE8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Adress" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="raT-YB-aFx">
+                                <rect key="frame" x="0.0" y="174" width="414" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rr-Io-E6o">
+                                <rect key="frame" x="172.5" y="794" width="69" height="48"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="doneButtonPressed:" destination="Irf-8A-NWT" eventType="touchUpInside" id="Fwo-3a-Auj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="qeZ-yH-wKz" firstAttribute="bottom" secondItem="FkK-w0-N7U" secondAttribute="bottom" constant="20" id="G0a-PS-1WZ"/>
+                            <constraint firstItem="lkZ-S5-SRG" firstAttribute="centerY" secondItem="cjX-6I-X6i" secondAttribute="centerY" constant="-20" id="6rc-bn-JwJ"/>
+                            <constraint firstItem="FkK-w0-N7U" firstAttribute="centerY" secondItem="1rr-Io-E6o" secondAttribute="centerY" id="C5H-GH-uP5"/>
+                            <constraint firstItem="qeZ-yH-wKz" firstAttribute="bottom" secondItem="1rr-Io-E6o" secondAttribute="bottom" constant="20" id="G8O-Ns-QoD"/>
                             <constraint firstItem="6sD-L5-mJm" firstAttribute="top" secondItem="cjX-6I-X6i" secondAttribute="top" id="NiF-ly-ZS7"/>
+                            <constraint firstItem="1rr-Io-E6o" firstAttribute="centerX" secondItem="cjX-6I-X6i" secondAttribute="centerX" id="Oca-1U-R1t"/>
                             <constraint firstItem="wMs-2w-h9B" firstAttribute="top" secondItem="qeZ-yH-wKz" secondAttribute="top" constant="20" id="PBT-pW-HWY"/>
                             <constraint firstItem="6sD-L5-mJm" firstAttribute="leading" secondItem="cjX-6I-X6i" secondAttribute="leading" id="Pr3-7h-wYa"/>
+                            <constraint firstItem="lkZ-S5-SRG" firstAttribute="centerX" secondItem="cjX-6I-X6i" secondAttribute="centerX" id="Pz6-VX-yVl"/>
+                            <constraint firstItem="raT-YB-aFx" firstAttribute="leading" secondItem="qeZ-yH-wKz" secondAttribute="leading" id="WU3-sD-cyZ"/>
+                            <constraint firstItem="raT-YB-aFx" firstAttribute="trailing" secondItem="qeZ-yH-wKz" secondAttribute="trailing" id="fYy-U1-vPY"/>
                             <constraint firstItem="qeZ-yH-wKz" firstAttribute="trailing" secondItem="wMs-2w-h9B" secondAttribute="trailing" constant="30" id="frO-j2-pLl"/>
                             <constraint firstAttribute="trailing" secondItem="6sD-L5-mJm" secondAttribute="trailing" id="h3V-e3-HI1"/>
+                            <constraint firstItem="raT-YB-aFx" firstAttribute="top" secondItem="qeZ-yH-wKz" secondAttribute="top" constant="130" id="pdy-v1-JT3"/>
                             <constraint firstItem="qeZ-yH-wKz" firstAttribute="trailing" secondItem="FkK-w0-N7U" secondAttribute="trailing" constant="30" id="vMO-gb-N5y"/>
                             <constraint firstAttribute="bottom" secondItem="6sD-L5-mJm" secondAttribute="bottom" id="ya8-ld-Wal"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="qeZ-yH-wKz"/>
                     </view>
                     <connections>
+                        <outlet property="adressLabel" destination="raT-YB-aFx" id="IpU-WS-qqb"/>
+                        <outlet property="doneButton" destination="1rr-Io-E6o" id="DLZ-wu-xBg"/>
+                        <outlet property="mapPinImage" destination="lkZ-S5-SRG" id="0Ud-J0-JLW"/>
                         <outlet property="mapView" destination="6sD-L5-mJm" id="1GP-8s-vaV"/>
                     </connections>
                 </viewController>
@@ -68,6 +101,7 @@
     </scenes>
     <resources>
         <image name="Location" width="128" height="128"/>
+        <image name="Pin" width="42" height="42"/>
         <image name="cancel" width="128" height="128"/>
     </resources>
 </document>

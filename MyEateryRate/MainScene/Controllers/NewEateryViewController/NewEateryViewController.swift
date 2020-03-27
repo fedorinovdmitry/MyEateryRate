@@ -124,11 +124,16 @@ class NewEateryViewController: UITableViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
+        
+        guard let identifier = segue.identifier,
+            let mapVC = segue.destination as? MapViewController
+            else { return }
+        
+        mapVC.incomeSegueIdentifier = identifier
+        
+        if identifier == "showEatery" {
+            mapVC.eatery = currentEatery
         }
-        let mapVC = segue.destination as! MapViewController
-        mapVC.eatery = currentEatery
     }
     
     
