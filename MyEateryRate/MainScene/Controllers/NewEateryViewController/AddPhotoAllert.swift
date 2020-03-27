@@ -19,9 +19,9 @@ extension NewEateryViewController {
         let camera = configCameraAction()
         let photo = configPhotoAction()
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-        actionSheet.addActions(actions: [camera,
-                                         photo,
-                                         cancel])
+        actionSheet.addActions([camera,
+                                photo,
+                                cancel])
         present(actionSheet,
                 animated: true,
                 completion: nil)

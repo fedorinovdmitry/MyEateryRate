@@ -63,13 +63,7 @@ class NewEateryViewController: UITableViewController {
     
     func saveEatery() {
         
-        var image: UIImage?
-        
-        if imageIsChanged {
-            image = eateryImage.image
-        } else {
-            image = #imageLiteral(resourceName: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? eateryImage.image : #imageLiteral(resourceName: "imagePlaceholder")
         
         let imageData = image?.pngData()
         
