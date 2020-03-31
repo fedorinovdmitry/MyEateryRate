@@ -18,7 +18,7 @@ class MapViewController: UIViewController {
     
     let annotationIdentifier = "annotationIdentifier"
     let locationManager = CLLocationManager()
-    let regionInMeters = 10000.00
+    let regionInMeters = 1000.00
     
     // MARK: - Outlets
     
@@ -37,6 +37,12 @@ class MapViewController: UIViewController {
     var incomeSegueIdentifier = ""
     var mapViewControllerDelegate: MapViewControllerDelegate?
     var eateryCoordinate: CLLocationCoordinate2D?
+    var previousLocation: CLLocation? {
+        didSet {
+            startTrakingUserLocation()
+        }
+    }
+    var directionsArray: [MKDirections] = []
     
     // MARK: - Private Properties
     
@@ -119,6 +125,16 @@ class MapViewController: UIViewController {
         }
     }
     
+    private func resetMapView(withNew directions: MKDirections) {
+        
+        mapView.removeOverlays(mapView.overlays)
+        directionsArray.append(directions)
+        
+        let _ = directionsArray.map { $0.cancel() }
+        directionsArray.removeAll()
+        
+    }
+    
     private func setupPlacemark() {
         
         guard let location = eatery?.location else { return }
@@ -193,7 +209,7 @@ class MapViewController: UIViewController {
     
     // MARK: Work with map
     
-    private func showUserLocation() {
+   func showUserLocation() {
         if let location = locationManager.location?.coordinate {
             let region = MKCoordinateRegion(center: location,
                                             latitudinalMeters: regionInMeters,
@@ -203,21 +219,38 @@ class MapViewController: UIViewController {
                               animated: true)
         }
     }
+    private func startTrakingUserLocation() {
+        
+        guard let previousLocation = previousLocation else { return }
+        let center = getCenterLocation(for: mapView)
+        guard center.distance(from: previousLocation) > 50 else { return }
+        self.previousLocation = center
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.showUserLocation()
+        }
+    }
     
     // MARK: Create Road functions
 
     private func getDirections() {
-        guard let loccation = locationManager.location?.coordinate else {
+        
+        guard let location = locationManager.location?.coordinate else {
             showAlertController.showSimpleAlert(title: "Error", message: "Current location is not found")
             return
         }
         
-        guard let request = createDirectionsRequest(from: loccation) else {
+        locationManager.startUpdatingLocation()
+        previousLocation = CLLocation(latitude: location.latitude,
+                                      longitude: location.longitude)
+        
+        guard let request = createDirectionsRequest(from: location) else {
             showAlertController.showSimpleAlert(title: "Error", message: "Destination is not found")
             return
         }
         
         let directions = MKDirections(request: request)
+        resetMapView(withNew: directions)
         
         //рассчет маршрута
         directions.calculate { [weak self] (response, error) in
@@ -229,7 +262,7 @@ class MapViewController: UIViewController {
             guard let response = response,
                 var fastRoute = response.routes.first else {
                 self?.showAlertController.showSimpleAlert(title: "Error",
-                                                    message: "Destination is not avaible")
+                                                          message: "Destination is not avaible")
                 return
             }
             var fastTime: Double = fastRoute.expectedTravelTime
@@ -241,11 +274,14 @@ class MapViewController: UIViewController {
                 }
                 self?.mapView.addOverlay(route.polyline)
                 //отображение всего маршрута на карте
-                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect,
+                                                animated: true)
                 
             }
-            let distance = String(format: "%.1f", fastRoute.distance / 1000)
-            let timeInterval = String(format: "%.0f", fastRoute.expectedTravelTime / 60)
+            let distance = String(format: "%.1f",
+                                  fastRoute.distance / 1000)
+            let timeInterval = String(format: "%.0f",
+                                      fastRoute.expectedTravelTime / 60)
             self?.fastRouteLabel.isHidden = false
             self?.fastRouteLabel.text = ("самый быстрый маршрут составит \(distance) км и продлится \(timeInterval) мин")
             

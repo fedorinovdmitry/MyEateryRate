@@ -44,6 +44,14 @@ extension MapViewController: MKMapViewDelegate {
         let center = getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
         
+        if incomeSegueIdentifier == "showEatery" && previousLocation != nil {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+                self.showUserLocation()
+            }
+        }
+        
+        geocoder.cancelGeocode()
+        
         geocoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
             if let error = error {
                 print(error)
