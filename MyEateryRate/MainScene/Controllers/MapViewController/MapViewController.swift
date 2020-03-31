@@ -24,16 +24,29 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var mapPinImage: UIImageView!
-    @IBOutlet weak var adressLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
     // MARK: - Public Properties
     
     var eatery: Eatery?
     var incomeSegueIdentifier = ""
-    
+    var mapViewControllerDelegate: MapViewControllerDelegate?
     
     // MARK: - Private Properties
+    
+    var centerPlacemark: CLPlacemark? {
+        didSet {
+            guard let streetName = centerPlacemark?.thoroughfare else { return }
+            let buildNumber = centerPlacemark?.subThoroughfare
+
+            DispatchQueue.main.async {
+                
+                self.addressLabel.text = "\(streetName) \(buildNumber ?? "")"
+                
+            }
+        }
+    }
     
     private lazy var showAlertController = DependsFactory.sharedInstance.makeUIAlertFactory(viewConroller: self)
     
@@ -45,6 +58,7 @@ class MapViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        addressLabel.text = ""
         setupMapView()
         checkLocationServices()
     }
@@ -61,7 +75,8 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        
+        mapViewControllerDelegate?.getAddress(centerPlacemark)
+        dismiss(animated: true)
     }
     
     // MARK: - Public methods
@@ -72,7 +87,7 @@ class MapViewController: UIViewController {
         if incomeSegueIdentifier == "showEatery" {
             setupPlacemark()
             mapPinImage.isHidden = true
-            adressLabel.isHidden = true
+            addressLabel.isHidden = true
             doneButton.isHidden = true
         }
     }
@@ -137,7 +152,7 @@ class MapViewController: UIViewController {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
             mapView.showsUserLocation = true
-            if incomeSegueIdentifier == "getAdress" {
+            if incomeSegueIdentifier == "getAddress" {
                 showUserLocation()
             }
             break
@@ -155,38 +170,15 @@ class MapViewController: UIViewController {
         @unknown default:
             print("New case is available")
         }
+
     }
-}
-
-// MARK: - MKMapViewDelegate
-
-extension MapViewController: MKMapViewDelegate {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        //если аннотация это текующее геопозиция пользователя то отмечать ее не будем
-        if annotation is MKUserLocation { return nil }
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
         
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) as? MKPinAnnotationView //приводим к типу который отображает марку
         
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation,
-                                              reuseIdentifier: annotationIdentifier)
-            
-            //чтобы наша аннотация отобразилась в виде банера
-            annotationView?.canShowCallout = true
-        }
-        
-        if let imageData = eatery?.imageData {
-            let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-            
-            imageView.layer.cornerRadius = 10
-            imageView.clipsToBounds = true
-            imageView.image = UIImage(data: imageData)
-            
-            annotationView?.rightCalloutAccessoryView = imageView
-        }
-        
-        return annotationView
+        return CLLocation(latitude: latitude, longitude: longitude)
     }
 }
 

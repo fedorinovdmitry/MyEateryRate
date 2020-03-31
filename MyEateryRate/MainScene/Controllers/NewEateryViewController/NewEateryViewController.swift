@@ -7,6 +7,7 @@
 //
 import Foundation
 import UIKit
+import MapKit
 
 class NewEateryViewController: UITableViewController {
 
@@ -48,6 +49,11 @@ class NewEateryViewController: UITableViewController {
         eateryName.addTarget(self,
                              action: #selector(textFieldChanged),
                              for: .editingChanged)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         setupEditScreen()
     }
     
@@ -63,6 +69,19 @@ class NewEateryViewController: UITableViewController {
     
     func saveEatery() {
         
+        let newEatery = getNewEateryFromScreen()
+        
+        if let editEatery = currentEatery {
+            StorageManager.sharedInstance.editingObject(editingEatery: editEatery,
+                                                        newEatery: newEatery)
+        } else {
+            StorageManager.sharedInstance.saveObject(newEatery)
+        }
+        
+    }
+    
+    func getNewEateryFromScreen() -> Eatery {
+        
         let image = imageIsChanged ? eateryImage.image : #imageLiteral(resourceName: "imagePlaceholder")
         
         let imageData = image?.pngData()
@@ -72,14 +91,7 @@ class NewEateryViewController: UITableViewController {
                                type: eateryType.text,
                                imageData: imageData,
                                rating: Double(ratingControl.rating))
-        
-        if let editEatery = currentEatery {
-            StorageManager.sharedInstance.editingObject(editingEatery: editEatery,
-                                                        newEatery: newEatery)
-        } else {
-            StorageManager.sharedInstance.saveObject(newEatery)
-        }
-        
+        return newEatery
     }
     
     // MARK: - Private methods
@@ -121,6 +133,7 @@ class NewEateryViewController: UITableViewController {
         ratingControl.rating = Int(eatery.rating)
     }
     
+    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -130,9 +143,10 @@ class NewEateryViewController: UITableViewController {
             else { return }
         
         mapVC.incomeSegueIdentifier = identifier
+        mapVC.mapViewControllerDelegate = self
         
         if identifier == "showEatery" {
-            mapVC.eatery = currentEatery
+            mapVC.eatery = getNewEateryFromScreen()
         }
     }
     
@@ -166,4 +180,18 @@ extension NewEateryViewController: UITextFieldDelegate {
         saveButton.isEnabled = eateryName.text?.isEmpty == false ? true : false
     }
     
+}
+
+
+//MARK: - MapViewController Delegate
+
+extension NewEateryViewController: MapViewControllerDelegate {
+    func getAddress(_ address: CLPlacemark?) {
+        let cityName = address?.locality
+        let streetName = address?.thoroughfare
+        let buildNumber = address?.subThoroughfare
+        
+        eateryLocation.text = "\(cityName ?? ""), \(streetName ?? "") \(buildNumber ?? "")"
+        
+    }
 }

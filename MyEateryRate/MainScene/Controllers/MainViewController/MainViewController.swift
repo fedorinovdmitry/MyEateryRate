@@ -47,6 +47,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         eateries = realm.objects(Eatery.self)
         
         ///Setup the searchController

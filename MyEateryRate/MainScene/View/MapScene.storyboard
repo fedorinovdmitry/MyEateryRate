@@ -88,7 +88,7 @@
                         <viewLayoutGuide key="safeArea" id="qeZ-yH-wKz"/>
                     </view>
                     <connections>
-                        <outlet property="adressLabel" destination="raT-YB-aFx" id="IpU-WS-qqb"/>
+                        <outlet property="addressLabel" destination="raT-YB-aFx" id="IpU-WS-qqb"/>
                         <outlet property="doneButton" destination="1rr-Io-E6o" id="DLZ-wu-xBg"/>
                         <outlet property="mapPinImage" destination="lkZ-S5-SRG" id="0Ud-J0-JLW"/>
                         <outlet property="mapView" destination="6sD-L5-mJm" id="1GP-8s-vaV"/>
