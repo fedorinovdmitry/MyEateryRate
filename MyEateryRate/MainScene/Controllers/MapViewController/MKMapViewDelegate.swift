@@ -60,4 +60,12 @@ extension MapViewController: MKMapViewDelegate {
         
         
     }
+    
+    //создание линии
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay as! MKPolyline)
+        renderer.strokeColor = .orange
+        
+        return renderer
+    }
 }

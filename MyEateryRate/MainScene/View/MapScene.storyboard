@@ -66,9 +66,28 @@
                                     <action selector="doneButtonPressed:" destination="Irf-8A-NWT" eventType="touchUpInside" id="Fwo-3a-Auj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P4n-g9-s5w">
+                                <rect key="frame" x="182" y="792" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="gYL-6d-LqI"/>
+                                    <constraint firstAttribute="width" constant="50" id="gpi-Kt-z3U"/>
+                                </constraints>
+                                <state key="normal" image="GetDirection"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="Irf-8A-NWT" eventType="touchUpInside" id="UM4-oz-kA1"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-XC-VzO">
+                                <rect key="frame" x="25" y="104" width="189" height="0.0"/>
+                                <color key="backgroundColor" red="0.85546875" green="0.5179725838899556" blue="0.05933673902685567" alpha="0.58172865316901412" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="qaV-XC-VzO" firstAttribute="top" secondItem="qeZ-yH-wKz" secondAttribute="top" constant="60" id="5sW-d0-3cd"/>
                             <constraint firstItem="lkZ-S5-SRG" firstAttribute="centerY" secondItem="cjX-6I-X6i" secondAttribute="centerY" constant="-20" id="6rc-bn-JwJ"/>
                             <constraint firstItem="FkK-w0-N7U" firstAttribute="centerY" secondItem="1rr-Io-E6o" secondAttribute="centerY" id="C5H-GH-uP5"/>
                             <constraint firstItem="qeZ-yH-wKz" firstAttribute="bottom" secondItem="1rr-Io-E6o" secondAttribute="bottom" constant="20" id="G8O-Ns-QoD"/>
@@ -77,10 +96,14 @@
                             <constraint firstItem="wMs-2w-h9B" firstAttribute="top" secondItem="qeZ-yH-wKz" secondAttribute="top" constant="20" id="PBT-pW-HWY"/>
                             <constraint firstItem="6sD-L5-mJm" firstAttribute="leading" secondItem="cjX-6I-X6i" secondAttribute="leading" id="Pr3-7h-wYa"/>
                             <constraint firstItem="lkZ-S5-SRG" firstAttribute="centerX" secondItem="cjX-6I-X6i" secondAttribute="centerX" id="Pz6-VX-yVl"/>
+                            <constraint firstItem="P4n-g9-s5w" firstAttribute="centerX" secondItem="cjX-6I-X6i" secondAttribute="centerX" id="Vfa-si-NrL"/>
                             <constraint firstItem="raT-YB-aFx" firstAttribute="leading" secondItem="qeZ-yH-wKz" secondAttribute="leading" id="WU3-sD-cyZ"/>
+                            <constraint firstItem="qaV-XC-VzO" firstAttribute="leading" secondItem="qeZ-yH-wKz" secondAttribute="leading" constant="25" id="f0E-vn-PcI"/>
                             <constraint firstItem="raT-YB-aFx" firstAttribute="trailing" secondItem="qeZ-yH-wKz" secondAttribute="trailing" id="fYy-U1-vPY"/>
                             <constraint firstItem="qeZ-yH-wKz" firstAttribute="trailing" secondItem="wMs-2w-h9B" secondAttribute="trailing" constant="30" id="frO-j2-pLl"/>
                             <constraint firstAttribute="trailing" secondItem="6sD-L5-mJm" secondAttribute="trailing" id="h3V-e3-HI1"/>
+                            <constraint firstItem="qeZ-yH-wKz" firstAttribute="bottom" secondItem="P4n-g9-s5w" secondAttribute="bottom" constant="20" id="inf-DZ-JOJ"/>
+                            <constraint firstItem="qeZ-yH-wKz" firstAttribute="trailing" secondItem="qaV-XC-VzO" secondAttribute="trailing" constant="200" id="lj4-6E-O5o"/>
                             <constraint firstItem="raT-YB-aFx" firstAttribute="top" secondItem="qeZ-yH-wKz" secondAttribute="top" constant="130" id="pdy-v1-JT3"/>
                             <constraint firstItem="qeZ-yH-wKz" firstAttribute="trailing" secondItem="FkK-w0-N7U" secondAttribute="trailing" constant="30" id="vMO-gb-N5y"/>
                             <constraint firstAttribute="bottom" secondItem="6sD-L5-mJm" secondAttribute="bottom" id="ya8-ld-Wal"/>
@@ -90,6 +113,8 @@
                     <connections>
                         <outlet property="addressLabel" destination="raT-YB-aFx" id="IpU-WS-qqb"/>
                         <outlet property="doneButton" destination="1rr-Io-E6o" id="DLZ-wu-xBg"/>
+                        <outlet property="fastRouteLabel" destination="qaV-XC-VzO" id="3Ex-Ud-bmD"/>
+                        <outlet property="goButton" destination="P4n-g9-s5w" id="h5X-qB-udL"/>
                         <outlet property="mapPinImage" destination="lkZ-S5-SRG" id="0Ud-J0-JLW"/>
                         <outlet property="mapView" destination="6sD-L5-mJm" id="1GP-8s-vaV"/>
                     </connections>
@@ -100,6 +125,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GetDirection" width="50" height="50"/>
         <image name="Location" width="128" height="128"/>
         <image name="Pin" width="42" height="42"/>
         <image name="cancel" width="128" height="128"/>
