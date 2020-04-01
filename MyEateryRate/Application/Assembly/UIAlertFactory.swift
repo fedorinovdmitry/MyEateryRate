@@ -54,14 +54,18 @@ class UIAlertCreatingController: UIAlertFactory {
     }
     
     func showGpsOffAlert() {
-        let alertController = UIAlertController(title: "Gps is off" , message: "Службаы геолокации отключены на данном устройстве, пожалуйста, перейдите в настройки -> конфиденциальность -> службы геолокации и переключите в состояние включено", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Gps is off" ,
+                                                message: "Службаы геолокации отключены на данном устройстве, пожалуйста, перейдите в настройки -> конфиденциальность -> службы геолокации и переключите в состояние включено",
+                                                preferredStyle: .alert)
         let cancel = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancel)
         addAlertOnView(allertController: alertController)
     }
     
     func showGpsAccessRestriced() {
-        let alertController = UIAlertController(title: "GPS access is restricted" , message: "In order to use tracking, please enable GPS in the Settigs app under Privacy, Location Services.", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "GPS access is restricted",
+                                                message: "In order to use tracking, please enable GPS in the Settigs app under Privacy, Location Services.",
+                                                preferredStyle: .alert)
         let goToSetting = UIAlertAction(title: "Go to settins now", style: .default) { (_) in
             UIApplication.tryToOpenAppSettings()
         }

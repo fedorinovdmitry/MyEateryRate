@@ -13,10 +13,12 @@ class DependsFactory {
     static let sharedInstance = DependsFactory()
     private init() {}
     
-    func makeUIAlertFactory(viewConroller: UIViewController)
-        -> UIAlertFactory {
+    func makeUIAlertFactory(viewConroller: UIViewController) -> UIAlertFactory {
             return UIAlertCreatingController(viewController: viewConroller)
     }
     
+    func makeMapActionFactory(viewController: UIViewController) -> MapActionFactory {
+        return MapManager(viewController: viewController)
+    }
     
 }

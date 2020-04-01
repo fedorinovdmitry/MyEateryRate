@@ -16,9 +16,9 @@ class MapViewController: UIViewController {
     
     // MARK: - Constants
     
+    
     let annotationIdentifier = "annotationIdentifier"
-    let locationManager = CLLocationManager()
-    let regionInMeters = 1000.00
+    
     
     // MARK: - Outlets
     
@@ -36,13 +36,20 @@ class MapViewController: UIViewController {
     var eatery: Eatery?
     var incomeSegueIdentifier = ""
     var mapViewControllerDelegate: MapViewControllerDelegate?
-    var eateryCoordinate: CLLocationCoordinate2D?
+    
     var previousLocation: CLLocation? {
         didSet {
-            startTrakingUserLocation()
+            mapManager.startTrakingUserLocation(for: mapView,
+                                                and: previousLocation) { [weak self] (currentLocation) in
+                                                    guard let mapVC = self else { return }
+                                                    mapVC.previousLocation = currentLocation
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                                        mapVC.mapManager.showUserLocation(mapView: mapVC.mapView)
+                                                    }
+            }
         }
     }
-    var directionsArray: [MKDirections] = []
+    
     
     // MARK: - Private Properties
     
@@ -60,6 +67,7 @@ class MapViewController: UIViewController {
     }
     
     private lazy var showAlertController = DependsFactory.sharedInstance.makeUIAlertFactory(viewConroller: self)
+    lazy var mapManager = DependsFactory.sharedInstance.makeMapActionFactory(viewController: self)
     
     // MARK: - Init
     
@@ -71,7 +79,7 @@ class MapViewController: UIViewController {
 
         addressLabel.text = ""
         setupMapView()
-        checkLocationServices()
+        
     }
     
     
@@ -82,7 +90,7 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func centerViewInUserLocation() {
-        showUserLocation()
+        mapManager.showUserLocation(mapView: mapView)
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
@@ -91,18 +99,27 @@ class MapViewController: UIViewController {
     }
     
     @IBAction func goButtonPressed() {
-        getDirections()
+        mapManager.getDirections(for: mapView,
+                                 previousLocation:
+            { [weak self] (location) in
+               guard let mapVC = self else { return }
+                mapVC.previousLocation = location
+        },
+                                 fastRouteSet:
+            { [weak self] (fastRoute) in
+                guard let mapVC = self else { return }
+                let distance = String(format: "%.1f",
+                                      fastRoute.distance / 1000)
+                let timeInterval = String(format: "%.0f",
+                                          fastRoute.expectedTravelTime / 60)
+                mapVC.fastRouteLabel.isHidden = false
+                mapVC.fastRouteLabel.text = ("самый быстрый маршрут составит \(distance) км и продлится \(timeInterval) мин")
+        })
     }
     
     // MARK: - Public methods
     
-    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
-        let latitude = mapView.centerCoordinate.latitude
-        let longitude = mapView.centerCoordinate.longitude
-        
-        
-        return CLLocation(latitude: latitude, longitude: longitude)
-    }
+    
     
     // MARK: - Private methods
     
@@ -110,196 +127,26 @@ class MapViewController: UIViewController {
     
     private func setupMapView() {
         
+        mapManager.checkLocationServices(mapView: mapView,
+                                         segueIdentifier: incomeSegueIdentifier) {
+                                            mapManager.locationManager.delegate = self
+        }
+        
         goButton.isHidden = true
         fastRouteLabel.isHidden = true
         
         if incomeSegueIdentifier == "showEatery" {
-            setupPlacemark()
             
             goButton.isHidden = false
-            
             
             mapPinImage.isHidden = true
             addressLabel.isHidden = true
             doneButton.isHidden = true
+            
+            guard let eatery = eatery else { return }
+            mapManager.setupPlacemark(eatery: eatery,
+                                      mapView: mapView)
         }
-    }
-    
-    private func resetMapView(withNew directions: MKDirections) {
-        
-        mapView.removeOverlays(mapView.overlays)
-        directionsArray.append(directions)
-        
-        let _ = directionsArray.map { $0.cancel() }
-        directionsArray.removeAll()
-        
-    }
-    
-    private func setupPlacemark() {
-        
-        guard let location = eatery?.location else { return }
-        
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(location) { [weak self] (placemarks, error)  in
-            guard let mapVC = self else { return }
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            guard let placemarks = placemarks else { return }
-            let placemark = placemarks.first
-            
-            let annotation = MKPointAnnotation()
-            annotation.title = mapVC.eatery?.name
-            annotation.subtitle = mapVC.eatery?.type
-            
-            guard let placemarkLocation = placemark?.location else { return }
-            
-            annotation.coordinate = placemarkLocation.coordinate
-            mapVC.eateryCoordinate = placemarkLocation.coordinate
-            
-            mapVC.mapView.showAnnotations([annotation], animated: true)
-            mapVC.mapView.selectAnnotation(annotation, animated: true)
-            
-        }
-    }
-    
-    private func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    // MARK: Check location access
-    
-    private func checkLocationServices() {
-        if CLLocationManager.locationServicesEnabled() {
-            setupLocationManager()
-            checkLocationAuthorization()
-            
-        } else {
-            showAlertController.showGpsOffAlert()
-        }
-    }
-    
-    private func checkLocationAuthorization() {
-        switch CLLocationManager.authorizationStatus() {
-        case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            if incomeSegueIdentifier == "getAddress" {
-                showUserLocation()
-            }
-            break
-        case .denied:
-            showAlertController.showGpsAccessRestriced()
-            break
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .restricted:
-            showAlertController.showSimpleAlert(title: "CLL Status is restricted" , message: "")
-            break
-        case .authorizedAlways:
-            break
-        
-        @unknown default:
-            print("New case is available")
-        }
-
-    }
-    
-    // MARK: Work with map
-    
-   func showUserLocation() {
-        if let location = locationManager.location?.coordinate {
-            let region = MKCoordinateRegion(center: location,
-                                            latitudinalMeters: regionInMeters,
-                                            longitudinalMeters: regionInMeters)
-            
-            mapView.setRegion(region,
-                              animated: true)
-        }
-    }
-    private func startTrakingUserLocation() {
-        
-        guard let previousLocation = previousLocation else { return }
-        let center = getCenterLocation(for: mapView)
-        guard center.distance(from: previousLocation) > 50 else { return }
-        self.previousLocation = center
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.showUserLocation()
-        }
-    }
-    
-    // MARK: Create Road functions
-
-    private func getDirections() {
-        
-        guard let location = locationManager.location?.coordinate else {
-            showAlertController.showSimpleAlert(title: "Error", message: "Current location is not found")
-            return
-        }
-        
-        locationManager.startUpdatingLocation()
-        previousLocation = CLLocation(latitude: location.latitude,
-                                      longitude: location.longitude)
-        
-        guard let request = createDirectionsRequest(from: location) else {
-            showAlertController.showSimpleAlert(title: "Error", message: "Destination is not found")
-            return
-        }
-        
-        let directions = MKDirections(request: request)
-        resetMapView(withNew: directions)
-        
-        //рассчет маршрута
-        directions.calculate { [weak self] (response, error) in
-            if let error = error {
-                print(error)
-                return
-            }
-            
-            guard let response = response,
-                var fastRoute = response.routes.first else {
-                self?.showAlertController.showSimpleAlert(title: "Error",
-                                                          message: "Destination is not avaible")
-                return
-            }
-            var fastTime: Double = fastRoute.expectedTravelTime
-            
-            for route in response.routes {
-                if route.expectedTravelTime < fastTime {
-                    fastTime = route.expectedTravelTime
-                    fastRoute = route
-                }
-                self?.mapView.addOverlay(route.polyline)
-                //отображение всего маршрута на карте
-                self?.mapView.setVisibleMapRect(route.polyline.boundingMapRect,
-                                                animated: true)
-                
-            }
-            let distance = String(format: "%.1f",
-                                  fastRoute.distance / 1000)
-            let timeInterval = String(format: "%.0f",
-                                      fastRoute.expectedTravelTime / 60)
-            self?.fastRouteLabel.isHidden = false
-            self?.fastRouteLabel.text = ("самый быстрый маршрут составит \(distance) км и продлится \(timeInterval) мин")
-            
-        }
-    }
-    
-    private func createDirectionsRequest(from coordinate: CLLocationCoordinate2D) -> MKDirections.Request? {
-        guard let destinationCoordinate = eateryCoordinate else { return nil }
-        let startingLocation = MKPlacemark(coordinate: coordinate)
-        let destination = MKPlacemark(coordinate: destinationCoordinate)
-        
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: startingLocation)
-        request.destination = MKMapItem(placemark: destination)
-        request.transportType = .automobile
-        request.requestsAlternateRoutes = true
-        
-        return request
     }
     
 }
@@ -308,8 +155,10 @@ class MapViewController: UIViewController {
 
 extension MapViewController: CLLocationManagerDelegate {
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        checkLocationAuthorization()
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
+        mapManager.checkLocationAuthorization(mapView: mapView,
+                                              segueIdentifier: incomeSegueIdentifier)
     }
     
 }

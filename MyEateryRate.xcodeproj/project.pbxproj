@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D37DFFC242CCE8300443BFA /* MapScene.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D37DFFB242CCE8300443BFA /* MapScene.storyboard */; };
 		2D37DFFE242CD8FD00443BFA /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D37DFFD242CD8FD00443BFA /* MapViewController.swift */; };
+		2D7F5A9B24339E86001083E0 /* MapManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7F5A9A24339E86001083E0 /* MapManager.swift */; };
 		2DED41BF242A628D00EEA4E0 /* RealmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41BE242A628D00EEA4E0 /* RealmConfig.swift */; };
 		2DED41C1242A692000EEA4E0 /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41C0242A692000EEA4E0 /* UserSettings.swift */; };
 		2DED41C3242A6C5000EEA4E0 /* FirstLaunchConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DED41C2242A6C5000EEA4E0 /* FirstLaunchConfig.swift */; };
@@ -38,6 +39,7 @@
 		094322273840DEAD347ECFC1 /* Pods_MyEateryRate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyEateryRate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D37DFFB242CCE8300443BFA /* MapScene.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MapScene.storyboard; sourceTree = "<group>"; };
 		2D37DFFD242CD8FD00443BFA /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		2D7F5A9A24339E86001083E0 /* MapManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapManager.swift; path = MyEateryRate/MainScene/Controllers/MapViewController/MapManager.swift; sourceTree = SOURCE_ROOT; };
 		2DED41BE242A628D00EEA4E0 /* RealmConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmConfig.swift; sourceTree = "<group>"; };
 		2DED41C0242A692000EEA4E0 /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSettings.swift; path = MyEateryRate/Application/Controller/AppDelegate/UserSettings.swift; sourceTree = SOURCE_ROOT; };
 		2DED41C2242A6C5000EEA4E0 /* FirstLaunchConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstLaunchConfig.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 		499895F2241F9CC2005E19EE /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2D7F5A9A24339E86001083E0 /* MapManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				2DEF1F55242E43B200F06FC3 /* MKMapViewDelegate.swift in Sources */,
 				499895D3241F8B31005E19EE /* AppDelegate.swift in Sources */,
 				495A21382422ABF100CD53BA /* StorageManager.swift in Sources */,
+				2D7F5A9B24339E86001083E0 /* MapManager.swift in Sources */,
 				49A7EDE624222058008E234D /* DependsFactory.swift in Sources */,
 				499895D5241F8B31005E19EE /* SceneDelegate.swift in Sources */,
 				49A7EDE8242220ED008E234D /* UIAlertFactory.swift in Sources */,

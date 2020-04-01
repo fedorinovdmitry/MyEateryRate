@@ -21,7 +21,7 @@ extension MapViewController: MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation,
-                                              reuseIdentifier: annotationIdentifier)
+                                                 reuseIdentifier: annotationIdentifier)
             
             //чтобы наша аннотация отобразилась в виде банера
             annotationView?.canShowCallout = true
@@ -41,12 +41,13 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        let center = getCenterLocation(for: mapView)
+        
+        let center = mapManager.getCenterLocation(for: mapView)
         let geocoder = CLGeocoder()
         
         if incomeSegueIdentifier == "showEatery" && previousLocation != nil {
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
-                self.showUserLocation()
+                self.mapManager.showUserLocation(mapView: mapView)
             }
         }
         
@@ -63,9 +64,7 @@ extension MapViewController: MKMapViewDelegate {
             let placemark = placemarks.first
             mapVC.centerPlacemark = placemark
             
-            
         }
-        
         
     }
     
