@@ -9,40 +9,15 @@
 import UIKit
 
 ///Фабрика по создания кастомных алертов
-protocol UIAlertFactory {
+protocol UIAlertFactory: class{
     
     func showSimpleAlert(title: String, message: String)
     func showGpsOffAlert()
     func showGpsAccessRestriced()
-    
-    init(viewController: UIViewController)
 }
 
 class UIAlertCreatingController: UIAlertFactory {
     
-    // MARK: - Custom types
-    
-    // MARK: - Constants
-    
-    // MARK: - Outlets
-    
-    // MARK: - Public Properties
-    
-    // MARK: - Private Properties
-    
-    private let viewController: UIViewController
-    
-    
-    // MARK: - Init
-    
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-    
-    
-    // MARK: - LifeStyle ViewController
-    
-    // MARK: - IBAction
     
     // MARK: - Public methods
     
@@ -77,13 +52,19 @@ class UIAlertCreatingController: UIAlertFactory {
     // MARK: - Private methods
     
     private func addAlertOnView(allertController: UIAlertController) {
-        DispatchQueue.main.async(execute: { [weak self] in
-            guard let workWitchAC = self else { return }
-            workWitchAC.viewController.present(allertController, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {
+            var rootViewController = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.rootViewController
+            
+            if let navigationController = rootViewController as? UINavigationController {
+                rootViewController = navigationController.viewControllers.last
+            }
+            if let tabBarController = rootViewController as? UITabBarController {
+                rootViewController = tabBarController.selectedViewController
+            }
+            
+            rootViewController?.present(allertController, animated: true, completion: nil)
         })
     }
-    
-    // MARK: - Navigation
     
 }
 

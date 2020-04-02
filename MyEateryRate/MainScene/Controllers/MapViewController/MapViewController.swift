@@ -41,52 +41,54 @@ class MapViewController: UIViewController {
         didSet {
             mapManager.startTrakingUserLocation(for: mapView,
                                                 and: previousLocation) { [weak self] (currentLocation) in
-                                                    guard let mapVC = self else { return }
-                                                    mapVC.previousLocation = currentLocation
+                                                    guard let self = self else { return }
+                                                    self.previousLocation = currentLocation
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                                                        mapVC.mapManager.showUserLocation(mapView: mapVC.mapView)
+                                                        self.mapManager.showUserLocation(mapView: self.mapView)
                                                     }
             }
         }
     }
     
+    var centerPlacemark: CLPlacemark? {
+           didSet {
+               guard let streetName = centerPlacemark?.thoroughfare else { return }
+               let buildNumber = centerPlacemark?.subThoroughfare
+
+               DispatchQueue.main.async {
+                   
+                   self.addressLabel.text = "\(streetName) \(buildNumber ?? "")"
+                   
+               }
+           }
+       }
     
     // MARK: - Private Properties
     
-    var centerPlacemark: CLPlacemark? {
-        didSet {
-            guard let streetName = centerPlacemark?.thoroughfare else { return }
-            let buildNumber = centerPlacemark?.subThoroughfare
-
-            DispatchQueue.main.async {
-                
-                self.addressLabel.text = "\(streetName) \(buildNumber ?? "")"
-                
-            }
-        }
-    }
-    
-    private lazy var showAlertController = DependsFactory.sharedInstance.makeUIAlertFactory(viewConroller: self)
-    lazy var mapManager = DependsFactory.sharedInstance.makeMapActionFactory(viewController: self)
-    
-    // MARK: - Init
+    lazy var mapManager = DependsFactory.sharedInstance.makeMapActionFactory()
     
 
     // MARK: - LifeStyle ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         addressLabel.text = ""
         setupMapView()
         
+        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
     
     // MARK: - IBAction
     
     @IBAction func closeVC() {
-        dismiss(animated: true)
+        navigationController?.popViewController(animated: true)
+
     }
     
     @IBAction func centerViewInUserLocation() {
@@ -95,7 +97,7 @@ class MapViewController: UIViewController {
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         mapViewControllerDelegate?.getAddress(centerPlacemark)
-        dismiss(animated: true)
+        closeVC()
     }
     
     @IBAction func goButtonPressed() {
@@ -116,10 +118,6 @@ class MapViewController: UIViewController {
                 mapVC.fastRouteLabel.text = ("самый быстрый маршрут составит \(distance) км и продлится \(timeInterval) мин")
         })
     }
-    
-    // MARK: - Public methods
-    
-    
     
     // MARK: - Private methods
     
@@ -148,7 +146,7 @@ class MapViewController: UIViewController {
                                       mapView: mapView)
         }
     }
-    
+
 }
 
 //MARK: - CLLocationManagerDelegate

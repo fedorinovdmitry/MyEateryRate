@@ -10,12 +10,6 @@ import UIKit
 
 @IBDesignable class RatingControl: UIStackView {
 
-    // MARK: - Custom types
-    
-    // MARK: - Constants
-    
-    // MARK: - Outlets
-    
     // MARK: - Public Properties
     
     var rating = 0 {
@@ -54,8 +48,6 @@ import UIKit
         setupButtons()
     }
     
-    // MARK: - LifeStyle ViewController
-    
     // MARK: - Button Action
     
     @objc func ratingButtonTap(button: UIButton) {
@@ -68,8 +60,6 @@ import UIKit
         rating = selectedRating == rating ? 0 : selectedRating
         
     }
-    
-    // MARK: - Public methods
     
     // MARK: - Private methods
     
@@ -134,7 +124,5 @@ import UIKit
         
         updateButtonsSelectionState()
     }
-    // MARK: - Navigation
-
 
 }

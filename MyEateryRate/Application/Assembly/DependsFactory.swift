@@ -9,16 +9,18 @@
 import Foundation
 import UIKit
 
+/// Создание зависимостей проекта
 class DependsFactory {
+    
     static let sharedInstance = DependsFactory()
     private init() {}
     
-    func makeUIAlertFactory(viewConroller: UIViewController) -> UIAlertFactory {
-            return UIAlertCreatingController(viewController: viewConroller)
+    func makeUIAlertFactory() -> UIAlertFactory {
+            return UIAlertCreatingController()
     }
     
-    func makeMapActionFactory(viewController: UIViewController) -> MapActionFactory {
-        return MapManager(viewController: viewController)
+    func makeMapActionFactory() -> MapActionFactory {
+        return MapManager()
     }
     
 }

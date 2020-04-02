@@ -9,8 +9,6 @@
 import UIKit
 
 class EateryViewCell: UITableViewCell {
-
-    // MARK: - Custom types
     
     // MARK: - Constants
     
@@ -24,17 +22,11 @@ class EateryViewCell: UITableViewCell {
             imageOfPlace.clipsToBounds = true
         }
     }
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var ratingControl: RatingControl!
-    
-    
-    // MARK: - Public Properties
-    
-    // MARK: - Private Properties
-    
-    // MARK: - Init
     
     // MARK: - LifeStyle
     
@@ -42,13 +34,13 @@ class EateryViewCell: UITableViewCell {
         super.awakeFromNib()
         
         //добавляем вью чтобы перекрать клики по кнопкам из рейтинг контрола
-        let emptyView = UIView(frame: CGRect(x: ratingControl.frame.minX, y: ratingControl.frame.minY, width: ratingControl.frame.width, height: ratingControl.frame.height))
+        let emptyView = UIView(frame: CGRect(x: ratingControl.frame.minX,
+                                             y: ratingControl.frame.minY,
+                                             width: ratingControl.frame.width,
+                                             height: ratingControl.frame.height))
         self.addSubview(emptyView)
          
     }
-    
-    
-    // MARK: - IBAction
     
     // MARK: - Public methods
     
@@ -67,9 +59,5 @@ class EateryViewCell: UITableViewCell {
         
     }
     
-    
-    // MARK: - Private methods
-    
-    // MARK: - Navigation
 
 }

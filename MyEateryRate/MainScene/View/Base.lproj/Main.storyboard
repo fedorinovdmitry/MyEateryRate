@@ -168,7 +168,7 @@
                                                     </constraints>
                                                     <state key="normal" image="map"/>
                                                     <connections>
-                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="showEatery" modalPresentationStyle="overFullScreen" id="dxS-h9-yKG"/>
+                                                        <segue destination="FTl-u6-C68" kind="show" identifier="showEatery" id="dxS-h9-yKG"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -252,7 +252,7 @@
                                                     </constraints>
                                                     <state key="normal" image="Placeholder"/>
                                                     <connections>
-                                                        <segue destination="FTl-u6-C68" kind="presentation" identifier="getAddress" modalPresentationStyle="overFullScreen" id="hnH-Jr-G2S"/>
+                                                        <segue destination="FTl-u6-C68" kind="show" identifier="getAddress" id="hnH-Jr-G2S"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -403,7 +403,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hnH-Jr-G2S"/>
+        <segue reference="dxS-h9-yKG"/>
         <segue reference="ED3-Zz-NpL"/>
     </inferredMetricsTieBreakers>
     <resources>

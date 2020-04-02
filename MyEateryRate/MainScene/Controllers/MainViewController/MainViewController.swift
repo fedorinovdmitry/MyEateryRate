@@ -11,10 +11,6 @@ import RealmSwift
 
 class MainViewController: UIViewController {
     
-    // MARK: - Custom types
-    
-    // MARK: - Constants
-    
     // MARK: - Outlets
     
     @IBOutlet weak var reversedSortingButton: UIBarButtonItem!
@@ -40,12 +36,11 @@ class MainViewController: UIViewController {
         return searchController.isActive && !searchBarIsEmpty
     }
     
-    // MARK: - Init
-    
     // MARK: - LifeStyle ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         eateries = realm.objects(Eatery.self)
@@ -53,6 +48,11 @@ class MainViewController: UIViewController {
         ///Setup the searchController
         configSearchController()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
     }
     
     // MARK: - IBAction
@@ -70,8 +70,6 @@ class MainViewController: UIViewController {
         }
         sorting()
     }
-    
-    // MARK: - Public methods
     
     // MARK: - Private methods
     

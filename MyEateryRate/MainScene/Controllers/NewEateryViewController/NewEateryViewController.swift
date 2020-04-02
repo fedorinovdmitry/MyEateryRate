@@ -11,10 +11,6 @@ import MapKit
 
 class NewEateryViewController: UITableViewController {
 
-    // MARK: - Custom types
-    
-    // MARK: - Constants
-    
     // MARK: - Outlets
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -31,14 +27,12 @@ class NewEateryViewController: UITableViewController {
     var currentEatery: Eatery?
     var imageIsChanged = false
     
-    // MARK: - Private Properties
-    
-    // MARK: - Init
-    
     // MARK: - LifeStyle ViewController
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         navigationController?.navigationBar.isHidden = false
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0,
                                                          y: 0,
@@ -54,9 +48,9 @@ class NewEateryViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = false
         setupEditScreen()
     }
-    
     
     // MARK: - IBAction
     

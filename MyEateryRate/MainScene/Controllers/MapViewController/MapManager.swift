@@ -9,7 +9,7 @@
 import MapKit
 import UIKit
 
-protocol MapActionFactory {
+protocol MapActionFactory: class {
     
     var locationManager: CLLocationManager { get }
     
@@ -44,7 +44,7 @@ protocol MapActionFactory {
                                   and location: CLLocation?,
                                   closure: (_ currentLocation: CLLocation) -> ())
     
-    init(viewController: UIViewController)
+//    init(viewController: UIViewController)
     
 }
 
@@ -64,21 +64,12 @@ class MapManager: MapActionFactory {
     
     private var directionsArray: [MKDirections] = []
     private var eateryCoordinate: CLLocationCoordinate2D?
-    private var viewController: UIViewController
     
     // MARK: - Private Properties
     
-    private lazy var showAlertController = DependsFactory.sharedInstance.makeUIAlertFactory(viewConroller: viewController)
+    private lazy var showAlertController = DependsFactory.sharedInstance.makeUIAlertFactory()
     
     // MARK: - Init
-    
-    required init(viewController: UIViewController) {
-        self.viewController = viewController
-    }
-    
-    // MARK: - LifeStyle ViewController
-    
-    // MARK: - IBAction
     
     // MARK: - Methods
     
@@ -272,6 +263,4 @@ class MapManager: MapActionFactory {
         
     }
     
-    // MARK: - Navigation
-
 }

@@ -11,6 +11,7 @@ import RealmSwift
 let realm = try! Realm()
 
 class StorageManager {
+    
     static let sharedInstance = StorageManager()
     private init() {}
     
